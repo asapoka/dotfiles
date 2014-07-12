@@ -1,0 +1,2 @@
+javac Book.java 
+java Book
