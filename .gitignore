@@ -1,2 +1,4 @@
 # backup files
 *.*~
+.ssh/id_rsa
+.ssh/known_hosts
