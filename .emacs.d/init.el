@@ -19,16 +19,3 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; yasnippetを置いているフォルダにパスを通す
-(add-to-list 'load-path
-             (expand-file-name "~/.emacs.d/elpa/yasnippet-20140617.1640"))
-
-;;自分用のスニペットフォルダと，拾ってきたスニペットフォルダの2つを作っておきます．
-;;(一つにまとめてもいいけど)
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/elpa/yasnippet-20140617.1640/snippets" 
-                ))
-
-;; yas起動
-(yas-global-mode 1)
