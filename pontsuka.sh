@@ -9,6 +9,10 @@ FILE_NAME=bump-$PONTSUKA_DATE$URL_posfix
 
 cd $WORK_DIR
 
+case $? in
+    "1" ) mkdir $WORK_DIR
+esac
+
 echo $PONTSUKA_DATE
 echo wget $URL
 wget -O $WORK_DIR$FILE_NAME $URL
