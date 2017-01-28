@@ -7,7 +7,7 @@ URL=$URL_prefix$PONTSUKA_DATE$URL_posfix
 FILE_NAME=bump-$PONTSUKA_DATE$URL_posfix
 TEMP_FILE_NAME=$(mktemp)
 RET_FILE=$(mktemp)
-
+echo "start ${0##*/}"
 cd $WORK_DIR
 
 case $? in
@@ -15,7 +15,7 @@ case $? in
 esac
 
 echo $PONTSUKA_DATE
-echo wget $URL
+#echo wget $URL
 wget -q -O $TEMP_FILE_NAME $URL
 
 case $? in
@@ -23,12 +23,12 @@ case $? in
     "8" ) echo "[Error] 404" ;;
 esac
 
-MD5=$(md5sum $TEMP_FILE_NAME)
+MD5=$(md5sum $TEMP_FILE_NAME) >> /dev/null
 
-echo $MD5
+#echo $MD5
 md5sum * > $RET_FILE
 
-grep $MD5 $RET_FILE
+grep $MD5 $RET_FILE >> /dev/null
 
 if [ $? = 1 ]; then
   # 1バイトでも中身があれば何もしない
@@ -40,3 +40,5 @@ else
   echo "the same file already exists"
 fi
 rm $RET_FILE
+
+echo "end ${0##/}"
