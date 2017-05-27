@@ -1,15 +1,5 @@
 dotfiles
 ========
-dotfileをgithubで管理すると
-
-どんな環境でもこのリポジトリをcloneしたら
-
-同じ環境になって便利らしいよ
-
-emacs package update
-
-M-x package-list-packages
-
-U
-
-x
+このリポジトリに含まれているもの
+・環境構築時に毎回書いているようなdotfiles
+・ちょっと書いたはいいけど保管場所に困るソースコードたち
