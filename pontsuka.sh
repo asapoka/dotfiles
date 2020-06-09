@@ -33,7 +33,7 @@ grep $MD5 $RET_FILE >> /dev/null
 if [ $? = 1 ]; then
   # 1バイトでも中身があれば何もしない
   mv $TEMP_FILE_NAME $WORK_DIR$FILE_NAME
-  /home/ec2-user/Dropbox-Uploader/dropbox_uploader.sh upload $WORK_DIR$FILE_NAME $FILE_NAME
+  ~/Dropbox-Uploader/dropbox_uploader.sh upload $WORK_DIR$FILE_NAME $FILE_NAME
 else
   # 0バイトだったら消す
   rm $TEMP_FILE_NAME
