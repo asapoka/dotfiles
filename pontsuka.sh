@@ -11,21 +11,27 @@ echo "start ${0##*/}"
 cd $WORK_DIR
 
 case $? in
-    "1" ) mkdir $WORK_DIR
+    "1" )
+      mkdir $WORK_DIR
+      cd $WORK_DIR ;;
 esac
 
 echo $PONTSUKA_DATE
-#echo wget $URL
+echo wget $URL
+
+#適当なファイル名でwgetする
 wget -q -O $TEMP_FILE_NAME $URL
 
+# wget の結果判定
 case $? in
     "0" ) echo "wget is successful" ;;
     "8" ) echo "[Error] 404" ;;
 esac
 
+# md5のハッシュ値を取得する
 MD5=$(md5sum $TEMP_FILE_NAME) >> /dev/null
 
-#echo $MD5
+echo $MD5
 md5sum * > $RET_FILE
 
 grep $MD5 $RET_FILE >> /dev/null
@@ -38,7 +44,10 @@ else
   # 0バイトだったら消す
   rm $TEMP_FILE_NAME
   echo "the same file already exists"
+  exit 0
 fi
+
+
 rm $RET_FILE
 
-echo "end ${0##/}"
+echo "pontsuka up ${0##/}"
