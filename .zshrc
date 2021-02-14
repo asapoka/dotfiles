@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# ログインシェルをzshに変更する
+# chsh -s /bin/zsh
+
 # 編集する際の心得　自分で意味分かんないやつコピペすんな
 
 # コマンドヒストリめっちゃ長く履歴保持させとく
@@ -18,11 +21,15 @@ else # macOS `ls`
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
-# alias系
+# alias系 ###############################################################################################################################################################################################################
+alias pro="code .zshrc"
+# 設定変えたら再読み込み
+alias reload!='. ~/.zshrc'
+
 # 事故防止
 alias rm='rm -i'
-alias rm='mv -i'
-alias rm='cp -i'
+alias mv='mv -i'
+alias cp='cp -i'
 alias mkdir='mkdir -p'
 
 # 上の階層へ移動するやつ
@@ -48,10 +55,11 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# zsh ########################################################################################################################################################################################################################
 # zshの拡張機能のsource
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# 補完機能を有効にする
+# 補完機能を有効にする　-Uオプションつけるとaliasの影響を受けずに実行になるので安全
 autoload -Uz compinit
 compinit
 
