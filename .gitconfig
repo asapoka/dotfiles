@@ -3,6 +3,7 @@
 	email = asapoka@outlook.com
 [core]
 	editor = code --wait
+	excludesfile = /Users/yosuke/.gitignore_global
 [color]
 	branch = auto
 	diff = auto
@@ -25,3 +26,9 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
