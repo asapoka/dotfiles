@@ -69,7 +69,11 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-
+# activate zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit && compinit
+fi
 
 # zsh option
 setopt print_eight_bit  # 日本語ファイル名を表示可能にする
