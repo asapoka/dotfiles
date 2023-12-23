@@ -10,3 +10,10 @@ Brewfileの書き出し方(usrディレクトリ配下に .Brewfileを作成す�
 ```
 brew bundle dump --force --describe --global
 ```
+
+Violentmonky
+
+ブラウザ拡張機能のViolentmonkeyで利用するユーザスクリプト
+ディレクトリごとzipアーカイブし、拡張機能の機能でインポートすること
+
+
