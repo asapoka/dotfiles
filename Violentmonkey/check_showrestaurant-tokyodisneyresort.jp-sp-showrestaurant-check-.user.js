@@ -20,12 +20,7 @@ function checkSheet(element) {
   $(element)
     .find("tr")
     .each(function (index, tr) {
-      console.log(
-        " " +
-          $(tr).find("th").text().trim() +
-          " " +
-          $(tr).find("td.state").text().trim()
-      );
+      console.log(" " + $(tr).find("th").text().trim() + " " + $(tr).find("td.state").text().trim());
       if ($(tr).find("a").length != 0) {
         $(tr).find("a:visible:first").click();
         console.log("click");
