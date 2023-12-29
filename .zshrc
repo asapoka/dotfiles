@@ -57,9 +57,18 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # zsh ########################################################################################################################################################################################################################
-# zshの拡張機能のsource
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+case "${OSTYPE}" in
+    darwin*)
+        # Mac
+		source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        ;;
+    linux*)
+        # Linux
+        ;;
+esac
+# zshの拡張機能のsource
+
 # 補完機能を有効にする　-Uオプションつけるとaliasの影響を受けずに実行になるので安全
 autoload -Uz compinit
 compinit
@@ -95,4 +104,3 @@ export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-exec fish
