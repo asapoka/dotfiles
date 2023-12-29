@@ -1,4 +1,5 @@
-dotfiles
+# dotfiles
+
 ========
 このリポジトリに含まれているもの
 
@@ -8,7 +9,7 @@ dotfiles
 
 Brewfileの書き出し方(usrディレクトリ配下に .Brewfileを作成する)
 
-```
+``` terminal
 brew bundle dump --force --describe --global
 ```
 
