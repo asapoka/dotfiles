@@ -12,6 +12,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+PROMPT='[%n@%m]# '
+RPROMPT='[%d]'
+
 # 事前の環境変数設定
 # Linux系とmacOS系でLSCOLORSの設定内容違うので、利用環境に合わせてexportする
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -61,7 +64,13 @@ case "${OSTYPE}" in
     darwin*)
         # Mac
 		source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        eval $(/opt/homebrew/bin/brew shellenv)
+        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+        export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
+        export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
+        export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
         ;;
     linux*)
         # Linux
@@ -96,11 +105,5 @@ setopt hist_ignore_space  # スペースから始まるコマンド行はヒス�
 setopt hist_reduce_blanks  # ヒストリに保存するときに余分なスペースを削除する
 
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-eval $(/opt/homebrew/bin/brew shellenv)
-export PATH=$PATH:~/go/bin
-export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
-export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
-export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 
