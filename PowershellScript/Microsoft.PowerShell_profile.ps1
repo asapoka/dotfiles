@@ -20,3 +20,7 @@ function pro {
 function source {
     . $PROFILE
 }
+
+function dot {
+    code $env:USERPROFILE/dotfiles
+}
