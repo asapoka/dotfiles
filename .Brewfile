@@ -57,6 +57,8 @@ brew "gh"
 brew "gist"
 # Prevents you from committing sensitive information to a git repo
 brew "git-secrets"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
 # Library for command-line editing
 brew "readline"
 # Alternative to top/htop
@@ -101,6 +103,8 @@ brew "ripgrep"
 brew "speedtest-cli"
 # Simplified and community-driven man pages
 brew "tldr"
+# Program that allows you to count code, quickly
+brew "tokei"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Sends magic packets to wake up network-devices
