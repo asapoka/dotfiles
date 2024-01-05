@@ -99,10 +99,13 @@ setopt hist_ignore_all_dups  # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space  # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks  # ヒストリに保存するときに余分なスペースを削除する
 
-# zsh
+# brew path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# zsh autosuggestions brew install zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
