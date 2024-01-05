@@ -66,11 +66,6 @@ case "${OSTYPE}" in
 		source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         eval $(/opt/homebrew/bin/brew shellenv)
-        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-        export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
-        export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
-        export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
         ;;
     linux*)
         # Linux
