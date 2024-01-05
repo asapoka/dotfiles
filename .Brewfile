@@ -37,8 +37,6 @@ brew "unbound"
 brew "gnutls"
 # C library for encoding, decoding, and manipulating JSON
 brew "jansson"
-# GNU Emacs text editor
-brew "emacs", restart_service: true
 # Emacs dependency management
 brew "cask"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -83,14 +81,10 @@ brew "libffi"
 brew "lunchy"
 # Mac App Store command-line interface
 brew "mas"
-# Modern and intuitive terminal-based text editor
-brew "micro"
 # Fast, highly customisable system info script
 brew "neofetch"
 # HTTP/2 C Library
 brew "nghttp2"
-# Development kit for the Java programming language
-brew "openjdk"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Command-line YAML and XML processor that wraps jq
@@ -111,8 +105,6 @@ brew "tree"
 brew "wakeonlan"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
-# UNIX shell (command interpreter)
-brew "zsh"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Additional completion definitions for zsh
@@ -125,12 +117,8 @@ cask "adguard"
 cask "adobe-acrobat-reader"
 # Android SDK component
 cask "android-platform-tools"
-# Automated testing of webapps for Google Chrome
-cask "chromedriver"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Fujitsu ScanSnap Scanner software
 cask "fujitsu-scansnap-home"
 # Client for the Google Drive storage service
