@@ -63,19 +63,17 @@ alias egrep='egrep --color=auto'
 case "${OSTYPE}" in
     darwin*)
         # Mac
+        # brew path
         eval $(/opt/homebrew/bin/brew shellenv)
         ;;
     linux*)
         # Linux
         # brew path
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
         ;;
 esac
-# zshの拡張機能のsource
 
-# 補完機能を有効にする　-Uオプションつけるとaliasの影響を受けずに実行になるので安全
-autoload -Uz compinit
-compinit
+# zshの拡張機能のsource
 
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
@@ -83,7 +81,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# activate zsh-completions
+# コマンドのサブコマンドを入力補完する zsh-completions の設定
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   autoload -Uz compinit && compinit
@@ -98,10 +96,9 @@ setopt share_history  # 同時に起動したzshの間でヒストリを共有�
 setopt hist_ignore_all_dups  # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space  # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks  # ヒストリに保存するときに余分なスペースを削除する
+setopt correct #コマンドのスペルをミスして実行した場合に候補を表示
 
-
-
-# zsh autosuggestions brew install zsh-autosuggestions
+# zshの入力補完とコマンドシンタックスハイライト 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
