@@ -63,8 +63,6 @@ alias egrep='egrep --color=auto'
 case "${OSTYPE}" in
     darwin*)
         # Mac
-		source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         eval $(/opt/homebrew/bin/brew shellenv)
         ;;
     linux*)
@@ -104,7 +102,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # zsh autosuggestions brew install zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 
