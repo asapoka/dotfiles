@@ -9,6 +9,7 @@ do
   [[ ${f} = ".git" ]] && continue
   [[ ${f} = ".gitignore" ]] && continue
   [[ ${f} = ".DS_Store" ]] && continue
+  [[ ${f} = ".vscode" ]] && continue
   ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
 done
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
