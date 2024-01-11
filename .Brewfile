@@ -1,6 +1,7 @@
 tap "chroju/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "powershell/tap"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Garbage collector for C and C++
@@ -47,8 +48,6 @@ brew "duf"
 brew "dust"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -83,14 +82,10 @@ brew "libffi"
 brew "lunchy"
 # Mac App Store command-line interface
 brew "mas"
-# Modern and intuitive terminal-based text editor
-brew "micro"
 # Fast, highly customisable system info script
 brew "neofetch"
 # HTTP/2 C Library
 brew "nghttp2"
-# Development kit for the Java programming language
-brew "openjdk"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Command-line YAML and XML processor that wraps jq
@@ -101,8 +96,6 @@ brew "python@3.9"
 brew "ripgrep"
 # Command-line interface for https://speedtest.net bandwidth tests
 brew "speedtest-cli"
-# Simplified and community-driven man pages
-brew "tldr"
 # Program that allows you to count code, quickly
 brew "tokei"
 # Display directories as trees (with optional color/HTML output)
@@ -119,18 +112,16 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Formula to install PowerShell
+brew "powershell/tap/powershell"
 # Stand alone ad blocker
 cask "adguard"
 # View, print, and comment on PDF documents
 cask "adobe-acrobat-reader"
 # Android SDK component
 cask "android-platform-tools"
-# Automated testing of webapps for Google Chrome
-cask "chromedriver"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Fujitsu ScanSnap Scanner software
 cask "fujitsu-scansnap-home"
 # Client for the Google Drive storage service
@@ -171,37 +162,22 @@ mas "RunCat", id: 1429033973
 mas "Tailscale", id: 1475387142
 mas "Twitter", id: 1482454543
 mas "Xcode", id: 497799835
-vscode "atlassian.atlascode"
 vscode "cocopon.iceberg-theme"
 vscode "codezombiech.gitignore"
 vscode "DavidAnson.vscode-markdownlint"
 vscode "donjayamanne.githistory"
 vscode "esbenp.prettier-vscode"
-vscode "formulahendry.vscode-mysql"
 vscode "leodevbro.blockman"
 vscode "ms-azuretools.vscode-docker"
 vscode "MS-CEINTL.vscode-language-pack-ja"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-python.isort"
 vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-keymap"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.powershell"
-vscode "Oracle.oracledevtools"
 vscode "PKief.material-icon-theme"
-vscode "redhat.java"
 vscode "redhat.vscode-yaml"
 vscode "VisualStudioExptTeam.intellicode-api-usage-examples"
 vscode "VisualStudioExptTeam.vscodeintellicode"
-vscode "vscjava.vscode-java-debug"
-vscode "vscjava.vscode-java-dependency"
 vscode "vscjava.vscode-java-pack"
-vscode "vscjava.vscode-java-test"
 vscode "vscjava.vscode-maven"
-vscode "vscode-icons-team.vscode-icons"
 vscode "yzhang.markdown-all-in-one"

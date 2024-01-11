@@ -26,9 +26,9 @@ else # macOS `ls`
 fi
 
 # alias系 ###############################################################################################################################################################################################################
-alias pro="code .zshrc"
+alias pro="code ~/.zshrc"
 # 設定変えたら再読み込み
-alias reload!='. ~/.zshrc'
+alias re='. ~/.zshrc'
 
 # 事故防止
 alias rm='rm -i'
@@ -63,24 +63,17 @@ alias egrep='egrep --color=auto'
 case "${OSTYPE}" in
     darwin*)
         # Mac
-		source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        # brew path
         eval $(/opt/homebrew/bin/brew shellenv)
-        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-        export GUILE_LOAD_PATH="/opt/homebrew/share/guile/site/3.0"
-        export GUILE_LOAD_COMPILED_PATH="/opt/homebrew/lib/guile/3.0/site-ccache"
-        export GUILE_SYSTEM_EXTENSIONS_PATH="/opt/homebrew/lib/guile/3.0/extensions"export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-        export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
         ;;
     linux*)
         # Linux
+        # brew path
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
         ;;
 esac
-# zshの拡張機能のsource
 
-# 補完機能を有効にする　-Uオプションつけるとaliasの影響を受けずに実行になるので安全
-autoload -Uz compinit
-compinit
+# zshの拡張機能のsource
 
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
@@ -88,7 +81,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# activate zsh-completions
+# コマンドのサブコマンドを入力補完する zsh-completions の設定
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   autoload -Uz compinit && compinit
@@ -103,6 +96,11 @@ setopt share_history  # 同時に起動したzshの間でヒストリを共有�
 setopt hist_ignore_all_dups  # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space  # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks  # ヒストリに保存するときに余分なスペースを削除する
+setopt nocorrect #コマンドのスペルをミスして実行した場合に候補を表示しない
+
+# zshの入力補完とコマンドシンタックスハイライト 
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 

@@ -34,4 +34,5 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-exec fish
+# brew path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
