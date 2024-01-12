@@ -3,17 +3,21 @@
 ========
 このリポジトリに含まれているもの
 
-・環境構築時に毎回書いているようなdotfiles
+・環境構築時に毎回書いているような dotfiles
 
 ・ちょっと書いたはいいけど保管場所に困るソースコードたち
 
-Brewfileの書き出し方(usrディレクトリ配下に .Brewfileを作成する)
+Brewfile の書き出し方(usr ディレクトリ配下に .Brewfile を作成する)
 
-``` terminal
+```terminal
 brew bundle dump --force --describe --global
 ```
 
 Violentmonkey
 
-ブラウザ拡張機能のViolentmonkeyで利用するユーザスクリプト
-ディレクトリごとzipアーカイブし、拡張機能の機能でインポートすること
+ブラウザ拡張機能の Violentmonkey で利用するユーザスクリプト
+ディレクトリごと zip アーカイブし、拡張機能の機能でインポートすること
+
+# Terminal で使っているフォント
+
+https://github.com/yuru7/HackGen/releases
