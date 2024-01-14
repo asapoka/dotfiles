@@ -20,7 +20,7 @@ if [ ! -d ${HOME}/.config ]; then
   mkdir ${HOME}/.config
 else
   if [ ! -d ${HOME}/.config/sheldon ]; then
-    mkdir sheldon
+    mkdir ${HOME}/.config/sheldon
     ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   else
     ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
