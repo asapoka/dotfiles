@@ -3,8 +3,7 @@ DOT_DIRECTORY="${HOME}/dotfiles"
 
 cd ${DOT_DIRECTORY}
 
-for f in .??*
-do
+for f in .??*; do
   # 無視したいファイルやディレクトリはこんな風に追加してね
   [[ ${f} = ".git" ]] && continue
   [[ ${f} = ".gitignore" ]] && continue
@@ -12,4 +11,14 @@ do
   [[ ${f} = ".vscode" ]] && continue
   ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
 done
+
+# staship
+if [ ! -d ${HOME}/.config ]; then
+  # .configが存在しない場合は作成
+  mkdir ${HOME}/.config
+  ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+else
+  ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+fi
+
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
