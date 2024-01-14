@@ -1,29 +1,28 @@
 [user]
-	name = asapoka
-	email = asapoka@outlook.com
+name = asapoka
+email = asapoka@outlook.com
 [core]
-	editor = code --wait
-	excludesfile = /Users/yosuke/.gitignore_global
+editor = code --wait
+excludesfile = /Users/yosuke/.gitignore_global
 [color]
-	branch = auto
-	diff = auto
-	grep = auto
-	interactive = auto
-	status = auto
-	ui = auto
+branch = auto
+diff = auto
+grep = auto
+interactive = auto
+status = auto
+ui = auto
 [grep]
-	lineNumbers = true
+lineNumbers = true
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+current = yellow reverse
+local = yellow
+remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+meta = yellow bold
+frag = magenta bold # line info
+old = red           # deletions
+new = green         # additions
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-
+added = yellow
+changed = green
+untracked = cyan
