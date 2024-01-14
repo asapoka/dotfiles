@@ -103,3 +103,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # starship有効化
 eval "$(starship init zsh)"
+
+# sheldon有効化
+eval "$(sheldon source)"
