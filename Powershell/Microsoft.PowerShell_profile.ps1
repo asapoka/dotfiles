@@ -24,17 +24,14 @@ function dot {
     code $env:USERPROFILE/dotfiles
 }
 
-Invoke-Expression (&starship init powershell)
 function ls {
     eza --icons --git
 }  
 function ll {
     eza --icons --git -l
 }  
-function lt {
-    eza -T -L 3 -a -I "node_modules|.git|.cache" --icons
-}
-function ltl {
-    eza -T -L 3 -a -I "node_modules|.git|.cache" -l --icons
-}
-    
+function la {
+    eza --icons --git -la
+}  
+
+Invoke-Expression (&starship init powershell)
