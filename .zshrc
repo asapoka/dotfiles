@@ -100,3 +100,6 @@ setopt nocorrect            #コマンドのスペルをミスして実行した
 # zshの入力補完とコマンドシンタックスハイライト
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# starship有効化
+eval "$(starship init zsh)"
