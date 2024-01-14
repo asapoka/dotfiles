@@ -12,6 +12,21 @@ for f in .??*; do
   ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
 done
 
+# sheldon
+
+# sheldon
+if [ ! -d ${HOME}/.config ]; then
+  # .configが存在しない場合は作成
+  mkdir ${HOME}/.config
+else
+  if [ ! -d ${HOME}/.config/sheldon ]; then
+    mkdir sheldon
+    ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+  else
+    ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+  fi
+fi
+
 # staship
 if [ ! -d ${HOME}/.config ]; then
   # .configが存在しない場合は作成

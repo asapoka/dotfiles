@@ -97,10 +97,6 @@ setopt hist_ignore_space    # スペースから始まるコマンド行はヒ�
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
 setopt nocorrect            #コマンドのスペルをミスして実行した場合に候補を表示しない
 
-# zshの入力補完とコマンドシンタックスハイライト
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # starship有効化
 eval "$(starship init zsh)"
 
