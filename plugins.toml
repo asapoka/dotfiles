@@ -37,6 +37,11 @@ apply = ["defer"]
 github = "zsh-users/zsh-completions"
 apply = ["defer"]
 
+# ペアの補完
+[plugins.zsh-autopair]
+github = "hlissner/zsh-autopair"
+apply = ["defer"]
+
 # For example:
 #
 # [plugins.base16]
