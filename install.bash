@@ -13,8 +13,6 @@ for f in .??*; do
 done
 
 # sheldon
-
-# sheldon
 if [ ! -d ${HOME}/.config ]; then
   # .configが存在しない場合は作成
   mkdir ${HOME}/.config
