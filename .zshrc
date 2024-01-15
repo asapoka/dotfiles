@@ -14,7 +14,6 @@ SAVEHIST=100000
 PROMPT='[%n@%m]# '
 RPROMPT='[%d]'
 
-
 # alias系 ###############################################################################################################################################################################################################
 alias pro="code ~/.zshrc"
 # 設定変えたら再読み込み
@@ -40,7 +39,6 @@ alias ll="eza -l --icons"
 # List all files colorized in long format, excluding . and ..
 alias la="eza -la --icons"
 
-
 # grepの色設定
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -63,18 +61,6 @@ linux*)
 esac
 
 # zshの拡張機能のsource
-
-# sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-  /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-# コマンドのサブコマンドを入力補完する zsh-completions の設定
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  autoload -Uz compinit && compinit
-fi
 
 # zsh option
 setopt print_eight_bit      # 日本語ファイル名を表示可能にする
