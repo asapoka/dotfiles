@@ -30,7 +30,7 @@ if ! command -v sheldon >/dev/null 2>&1; then
   echo -e "\e[36mInstalled sheldon\e[m\n"
 fi
 
-# staship
+# starship
 if [ ! -d ${HOME}/.config ]; then
   # .configが存在しない場合は作成
   mkdir ${HOME}/.config
@@ -39,9 +39,9 @@ else
   ln -snfv ${DOT_DIRECTORY}/zsh/.config/starship.toml ${HOME}/.config/starship.toml
 fi
 
-if ! command -v staship >/dev/null 2>&1; then
-  brew install staship
-  echo -e "\e[36mInstalled staship\e[m\n"
+if ! command -v starship >/dev/null 2>&1; then
+  brew install starship
+  echo -e "\e[36mInstalled starship\e[m\n"
 fi
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
