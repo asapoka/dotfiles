@@ -19,9 +19,9 @@ if [ ! -d ${HOME}/.config ]; then
 else
   if [ ! -d ${HOME}/.config/sheldon ]; then
     mkdir ${HOME}/.config/sheldon
-    ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   else
-    ln -snfv ${DOT_DIRECTORY}/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   fi
 fi
 
@@ -29,9 +29,9 @@ fi
 if [ ! -d ${HOME}/.config ]; then
   # .configが存在しない場合は作成
   mkdir ${HOME}/.config
-  ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+  ln -snfv ${DOT_DIRECTORY}/zsh/.config/starship.toml ${HOME}/.config/starship.toml
 else
-  ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+  ln -snfv ${DOT_DIRECTORY}/zsh/.config/starship.toml ${HOME}/.config/starship.toml
 fi
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
