@@ -37,5 +37,3 @@ else
 fi
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
-
-source ${HOME}/.zshrc
