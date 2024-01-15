@@ -3,6 +3,9 @@
 # ログインシェルをzshに変更する
 # chsh -s /bin/zsh
 
+# zprof
+zmodload zsh/zprof && zprof
+
 # 編集する際の心得　自分で意味分かんないやつコピペすんな
 
 # コマンドヒストリめっちゃ長く履歴保持させとく
@@ -78,3 +81,7 @@ eval "$(starship init zsh)"
 
 # sheldon有効化
 eval "$(sheldon source)"
+
+if (which zprof >/dev/null 2>&1); then
+  zprof
+fi
