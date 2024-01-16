@@ -16,13 +16,13 @@ done
 if [ ! -d ${HOME}/.config ]; then
   # .configが存在しない場合は作成
   mkdir ${HOME}/.config
+fi
+
+if [ ! -d ${HOME}/.config/sheldon ]; then
+  mkdir ${HOME}/.config/sheldon
+  ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 else
-  if [ ! -d ${HOME}/.config/sheldon ]; then
-    mkdir ${HOME}/.config/sheldon
-    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
-  else
-    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
-  fi
+  ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 fi
 
 if ! command -v sheldon >/dev/null 2>&1; then
@@ -42,6 +42,11 @@ fi
 if ! command -v starship >/dev/null 2>&1; then
   brew install starship
   echo -e "\e[36mInstalled starship\e[m\n"
+fi
+
+if ! command -v eza >/dev/null 2>&1; then
+  brew install eza
+  echo -e "\e[36mInstalled eza\e[m\n"
 fi
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
