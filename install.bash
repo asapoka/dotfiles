@@ -40,6 +40,7 @@ linux*)
 esac
 
 if ! command -v sheldon >/dev/null 2>&1; then
+  echo -e "\e[36mInstalling... sheldon\e[m\n"
   brew install sheldon >/dev/null
   echo -e "\e[36mInstalled sheldon\e[m\n"
 fi
@@ -54,11 +55,13 @@ else
 fi
 
 if ! command -v starship >/dev/null 2>&1; then
+  echo -e "\e[36mInstalling... starship\e[m\n"
   brew install starship >/dev/null
   echo -e "\e[36mInstalled starship\e[m\n"
 fi
 
 if ! command -v eza >/dev/null 2>&1; then
+  echo -e "\e[36mInstalling... eza\e[m\n"
   brew install eza >/dev/null
   echo -e "\e[36mInstalled eza\e[m\n"
 fi
