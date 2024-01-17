@@ -25,6 +25,20 @@ else
   ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 fi
 
+# brew eval
+case "${OSTYPE}" in
+darwin*)
+  # Mac
+  # brew path
+  eval $(/opt/homebrew/bin/brew shellenv)
+  ;;
+linux*)
+  # Linux
+  # brew path
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  ;;
+esac
+
 if ! command -v sheldon >/dev/null 2>&1; then
   brew install sheldon
   echo -e "\e[36mInstalled sheldon\e[m\n"
