@@ -34,4 +34,16 @@ function la {
     eza --icons --git -la
 }  
 
+function .. {
+    Set-Location ..
+}
+
+function ... {
+    Set-Location ../..
+}
+
+function .... {
+    Set-Location ../../..
+}
+
 Invoke-Expression (&starship init powershell)
