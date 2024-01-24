@@ -1,5 +1,8 @@
 #!/bin/bash
-DOT_DIRECTORY="${HOME}/dotfiles"
+DOT_DIRECTORY=$(
+  cd $(dirname $0)
+  pwd
+)
 
 cd ${DOT_DIRECTORY}
 
