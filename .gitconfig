@@ -26,3 +26,5 @@ new = green         # additions
 added = yellow
 changed = green
 untracked = cyan
+[ghq]
+root = ~/ghq
