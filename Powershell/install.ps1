@@ -15,8 +15,8 @@ install_profile($ps)
 
 $starship = Join-Path $env:USERPROFILE .config starship.toml
 if (Test-Path (Join-Path $env:USERPROFILE .config)) {
-    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\zsh\.config\starship.toml").FullName -Force
+    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
 } else {
     New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
-    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\zsh\.config\starship.toml").FullName -Force
+    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
 }
