@@ -49,16 +49,8 @@ function .... {
     Set-Location ../../..
 }
 # Ctrl + r でfzfの履歴検索
-Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
-    $command = (Get-Content (Get-PSReadlineOption).HistorySavePath)[(Get-Content (Get-PSReadlineOption).HistorySavePath).length..0] | Select-Object -Unique |  Invoke-Fzf -NoSort -Exact
-    # プロンプトを表示する
-    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-    # コマンドが空っぽのときは何もしない
-    if (!$command) {
-        return
-    }
-    # 結果をプロンプトへ挿入する
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($command)
-}
-
+Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+# Ctrl + t でfzfのファイル検索
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+# starshipを有効化
 Invoke-Expression (&starship init powershell)
