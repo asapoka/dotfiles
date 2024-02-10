@@ -1,4 +1,13 @@
 #!/bin/bash
+# install command if command is not installed
+function install_command() {
+  if ! command -v $1 >/dev/null 2>&1; then
+    echo -e "\e[36mInstalling... $1\e[m\n"
+    brew install $1
+    echo -e "\e[36mInstalled $1\e[m\n"
+  fi
+}
+
 DOT_DIRECTORY=$(
   cd $(dirname $0)
   pwd
@@ -42,11 +51,10 @@ linux*)
   ;;
 esac
 
-if ! command -v sheldon >/dev/null 2>&1; then
-  echo -e "\e[36mInstalling... sheldon\e[m\n"
-  brew install sheldon
-  echo -e "\e[36mInstalled sheldon\e[m\n"
-fi
+install_command sheldon
+install_command starship
+install_command eza
+install_command fzf
 
 # starship
 if [ ! -d ${HOME}/.config ]; then
@@ -55,18 +63,6 @@ if [ ! -d ${HOME}/.config ]; then
   ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
 else
   ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
-fi
-
-if ! command -v starship >/dev/null 2>&1; then
-  echo -e "\e[36mInstalling... starship\e[m\n"
-  brew install starship
-  echo -e "\e[36mInstalled starship\e[m\n"
-fi
-
-if ! command -v eza >/dev/null 2>&1; then
-  echo -e "\e[36mInstalling... eza\e[m\n"
-  brew install eza
-  echo -e "\e[36mInstalled eza\e[m\n"
 fi
 
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)

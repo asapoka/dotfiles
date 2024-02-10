@@ -3,7 +3,6 @@ name = asapoka
 email = asapoka@outlook.com
 [core]
 editor = code --wait
-excludesfile = /Users/yosuke/.gitignore_global
 [color]
 branch = auto
 diff = auto
@@ -26,5 +25,3 @@ new = green         # additions
 added = yellow
 changed = green
 untracked = cyan
-[ghq]
-root = ~/ghq

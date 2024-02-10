@@ -71,7 +71,8 @@ setopt share_history        # 同時に起動したzshの間でヒストリを�
 setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space    # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
-setopt nocorrect            #コマンドのスペルをミスして実行した場合に候補を表示しない
+setopt nocorrect            # コマンドのスペルをミスして実行した場合に候補を表示しない
+setopt no_beep              # ビープ音を鳴らさない
 
 # starship有効化
 eval "$(starship init zsh)"
