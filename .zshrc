@@ -74,15 +74,6 @@ setopt hist_reduce_blanks   # ヒストリに保存するときに余分なス�
 setopt nocorrect            # コマンドのスペルをミスして実行した場合に候補を表示しない
 setopt no_beep              # ビープ音を鳴らさない
 
-# fzfの設定
-function fzf-select-history() {
-  BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle reset-prompt
-}
-zle -N fzf-select-history
-bindkey '^r' fzf-select-history
-
 # starship有効化
 eval "$(starship init zsh)"
 

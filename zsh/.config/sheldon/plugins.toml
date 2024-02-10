@@ -42,6 +42,17 @@ apply = ["defer"]
 github = "hlissner/zsh-autopair"
 apply = ["defer"]
 
+# ファジーファインダー（あいまい検索）プラグイン
+[plugins.fzf]
+github = "junegunn/fzf"
+apply = ['fzf-install', 'fzf-source']
+
+[templates]
+PATH = 'export PATH="$PATH:{{ dir }}"'
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+fzf-install = "{{ dir }}/install --bin > /dev/null \n[[ ! $PATH =~ {{ dir }} ]] && export PATH=\"$PATH:{{ dir }}/bin\"\n"
+fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
+
 # For example:
 #
 # [plugins.base16]
