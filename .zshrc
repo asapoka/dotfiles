@@ -71,10 +71,24 @@ setopt share_history        # 同時に起動したzshの間でヒストリを�
 setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space    # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
-setopt nocorrect            #コマンドのスペルをミスして実行した場合に候補を表示しない
+setopt nocorrect            # コマンドのスペルをミスして実行した場合に候補を表示しない
+setopt no_beep              # ビープ音を鳴らさない
+
+# fzf
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
 
 # starship有効化
 eval "$(starship init zsh)"
 
 # sheldon有効化
 eval "$(sheldon source)"
+# fzf
+## fzf
+function fzf-select-history() {
+  BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
