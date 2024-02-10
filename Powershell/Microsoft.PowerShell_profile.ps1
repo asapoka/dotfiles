@@ -5,6 +5,9 @@ Set-Alias ls eza
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptNextSuggestionWord
 
+# 重複した履歴を保存しないようにする
+Set-PSReadlineOption -HistoryNoDuplicates
+
 # 環境変数を表示
 function env {
     Get-ChildItem env:    
@@ -44,6 +47,18 @@ function ... {
 
 function .... {
     Set-Location ../../..
+}
+# Ctrl + r でfzfの履歴検索
+Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
+    $command = (Get-Content (Get-PSReadlineOption).HistorySavePath)[(Get-Content (Get-PSReadlineOption).HistorySavePath).length..0] | Select-Object -Unique |  Invoke-Fzf -NoSort -Exact
+    # プロンプトを表示する
+    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+    # コマンドが空っぽのときは何もしない
+    if (!$command) {
+        return
+    }
+    # 結果をプロンプトへ挿入する
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($command)
 }
 
 Invoke-Expression (&starship init powershell)
