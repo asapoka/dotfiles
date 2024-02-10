@@ -15,6 +15,10 @@ shell = "zsh"
 [templates]
 # source読み込みを遅延読み込みにする
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+# fzf
+PATH = 'export PATH="$PATH:{{ dir }}"'
+fzf-install = "{{ dir }}/install --bin > /dev/null \n[[ ! $PATH =~ {{ dir }} ]] && export PATH=\"$PATH:{{ dir }}/bin\"\n"
+fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 
 [plugins]
 
@@ -47,11 +51,7 @@ apply = ["defer"]
 github = "junegunn/fzf"
 apply = ['fzf-install', 'fzf-source']
 
-[templates]
-PATH = 'export PATH="$PATH:{{ dir }}"'
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
-fzf-install = "{{ dir }}/install --bin > /dev/null \n[[ ! $PATH =~ {{ dir }} ]] && export PATH=\"$PATH:{{ dir }}/bin\"\n"
-fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
+
 
 # For example:
 #
