@@ -69,4 +69,9 @@ if ! command -v eza >/dev/null 2>&1; then
   echo -e "\e[36mInstalled eza\e[m\n"
 fi
 
+if ! command -v fzf >/dev/null 2>&1; then
+  echo -e "\e[36mInstalling... fzf\e[m\n"
+  brew install fzf
+  echo -e "\e[36mInstalled fzf\e[m\n"
+fi
 echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)

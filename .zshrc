@@ -74,17 +74,7 @@ setopt hist_reduce_blanks   # ヒストリに保存するときに余分なス�
 setopt nocorrect            # コマンドのスペルをミスして実行した場合に候補を表示しない
 setopt no_beep              # ビープ音を鳴らさない
 
-# fzf
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
-
-# starship有効化
-eval "$(starship init zsh)"
-
-# sheldon有効化
-eval "$(sheldon source)"
-# fzf
-## fzf
+# fzfの設定
 function fzf-select-history() {
   BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -92,3 +82,9 @@ function fzf-select-history() {
 }
 zle -N fzf-select-history
 bindkey '^r' fzf-select-history
+
+# starship有効化
+eval "$(starship init zsh)"
+
+# sheldon有効化
+eval "$(sheldon source)"
