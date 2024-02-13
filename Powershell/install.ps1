@@ -27,11 +27,12 @@ function check_installedModule {
         Install-Module $name
     } 
 }
-# スクリプトのあるディレクトリへ移動
-Set-Location $PSScriptRoot
+
+# インストール処理
+
 $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
-$ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 
+$ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
 
 install_profile($pwsh)
 install_profile($vscode)
