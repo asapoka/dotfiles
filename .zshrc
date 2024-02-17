@@ -79,3 +79,4 @@ eval "$(starship init zsh)"
 
 # sheldon有効化
 eval "$(sheldon source)"
+eval "$(mise activate zsh)"
