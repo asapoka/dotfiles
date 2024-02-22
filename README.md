@@ -2,7 +2,7 @@
 
 ## Installation
 
-linux and macOS
+Linux and macOS
 
 ```bash
 cd dotfiles
@@ -16,17 +16,9 @@ cd dotfiles/Powershell
 sudo install.ps1
 ```
 
-## Brewfile の書き出し方(usr ディレクトリ配下に .Brewfile を作成する)
-
-```
-
-brew bundle dump --force --describe --global
-
-```
-
 ## Terminal で使っているフォント
 
-```
+```font
 'HackGen Console NF'
 ```
 
