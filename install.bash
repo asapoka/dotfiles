@@ -74,6 +74,15 @@ else
   ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
 fi
 
+# alacritty
+if [ ! -d ${HOME}/.config/alacritty ]; then
+  warning ".config/alacritty directory not found. create ~/.config/alacritty"
+  mkdir -p ${HOME}/.config/alacritty
+  ln -snfv ${DOT_DIRECTORY}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
+else
+  ln -snfv ${DOT_DIRECTORY}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
+fi
+
 # brew eval
 case "${OSTYPE}" in
 darwin*)
