@@ -3,7 +3,7 @@ padding = { x = 4, y = 2 }
 # 不透明度
 #opacity = 0.75
 blur = true
-#startup_mode = "Fullscreen"
+startup_mode = "Maximized"
 
 [window.dimensions]
 columns = 150
