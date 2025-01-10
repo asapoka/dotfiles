@@ -1,9 +1,9 @@
 # 読み込みたいps1スクリプトの保存場所
 # TODO 固定パスなのをどうにかしたい
 #Windows
-if($IsWindows){
+if ($IsWindows) {
     $psdir = Join-Path $env:USERPROFILE dotfiles PowerShell autoload
-}else{
+} else {
     # other os
     $psdir = Join-Path $HOME dotfiles PowerShell autoload
 }
