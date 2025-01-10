@@ -29,24 +29,29 @@ function check_installedModule {
 }
 
 # インストール処理
+# windows
+if($IsWindows){
+    $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+    $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
+    $ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
 
-$pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-$vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
-$ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
+    install_profile($pwsh)
+    install_profile($vscode)
+    install_profile($ps)
 
-install_profile($pwsh)
-install_profile($vscode)
-install_profile($ps)
-
-$starship = Join-Path $env:USERPROFILE .config starship.toml
-if (Test-Path (Join-Path $env:USERPROFILE .config)) {
-    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
-} else {
-    New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
-    New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
+    $starship = Join-Path $env:USERPROFILE .config starship.toml
+    if (Test-Path (Join-Path $env:USERPROFILE .config)) {
+        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
+    } else {
+        New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
+        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
+    }
+    check_command fzf junegunn.fzf 
+    check_command eza eza-community.eza
+    check_command starship Starship.Starship
+    check_installedModule PSFzf
+}elseif($PROFILE){
+    install_profile($PROFILE)
+    check_installedModule PSFzf
 }
 
-check_command fzf junegunn.fzf 
-check_command eza eza-community.eza
-check_command starship Starship.Starship
-check_installedModule PSFzf

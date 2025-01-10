@@ -1,6 +1,17 @@
 # 読み込みたいps1スクリプトの保存場所
+$scriptPath = $MyInvocation.MyCommand.Path
+
+echo $scriptPath
+Split-Path -Parent $scriptPath
+
 # TODO 固定パスなのをどうにかしたい
-$psdir = Join-Path $env:USERPROFILE dotfiles PowerShell autoload
+#Windows
+if($IsWindows){
+    $psdir = Join-Path $env:USERPROFILE dotfiles PowerShell autoload
+}else{
+    # other os
+    $psdir = Join-Path $HOME dotfiles PowerShell autoload
+}
 # 保存場所にある全てのps1スクリプトを読み込む
 Get-ChildItem "${psdir}\*.ps1" | ForEach-Object { .$_ }
 
