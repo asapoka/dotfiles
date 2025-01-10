@@ -5,7 +5,7 @@ if ($IsWindows) {
     $psdir = Join-Path $env:USERPROFILE dotfiles PowerShell autoload
 } else {
     # other os
-    $psdir = Join-Path $HOME dotfiles PowerShell autoload
+    $psdir = Join-Path $HOME dotfiles Powershell autoload
 }
 # 保存場所にある全てのps1スクリプトを読み込む
 Get-ChildItem "${psdir}\*.ps1" | ForEach-Object { .$_ }
