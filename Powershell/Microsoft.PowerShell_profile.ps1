@@ -1,9 +1,4 @@
 # 読み込みたいps1スクリプトの保存場所
-$scriptPath = $MyInvocation.MyCommand.Path
-
-echo $scriptPath
-Split-Path -Parent $scriptPath
-
 # TODO 固定パスなのをどうにかしたい
 #Windows
 if($IsWindows){
