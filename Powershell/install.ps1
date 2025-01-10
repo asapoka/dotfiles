@@ -27,10 +27,14 @@ function check_installedModule {
         Install-Module $name
     } 
 }
+# PowerShel Core でなければ終了
+if ( $PSVersionTable.PSEdition -ne 'Core') {
+    exit
+}
 
 # インストール処理
 # windows
-if($IsWindows){
+if ($IsWindows) {
     $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
     $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
     $ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
@@ -49,9 +53,9 @@ if($IsWindows){
     check_command fzf junegunn.fzf 
     check_command eza eza-community.eza
     check_command starship Starship.Starship
-    check_installedModule PSFzf
-}elseif($PROFILE){
+    check_installedModule PSfzf
+} elseif ($IsMacOS -or $IsLinux) {
     install_profile($PROFILE)
-    check_installedModule PSFzf
+    check_installedModule PSfzf
 }
 
