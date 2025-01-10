@@ -1,3 +1,7 @@
+# PowerShel Core でなければ終了
+if ( $PSVersionTable.PSEdition -ne 'Core') {
+    exit
+}
 # 読み込みたいps1スクリプトの保存場所
 # TODO 固定パスなのをどうにかしたい
 #Windows
