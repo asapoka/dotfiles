@@ -55,7 +55,9 @@ apply = ["defer"]
 github = "junegunn/fzf"
 apply = ['fzf-install', 'fzf-source']
 
-
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+apply = ["defer"]
 
 # For example:
 #

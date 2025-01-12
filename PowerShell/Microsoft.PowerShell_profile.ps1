@@ -26,6 +26,8 @@ Set-PSReadlineOption -HistoryNoDuplicates
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 # Ctrl + t でfzfのファイル検索
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+# TabでPSFzf補完
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 
 # starship を有効化
