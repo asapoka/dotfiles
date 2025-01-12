@@ -33,20 +33,11 @@ alias .....="cd ../../../.."
 
 # lsの色設定
 # Always use color output for `ls`
-alias ls="eza --icons"
-# List all files colorized in long format
-alias ll="eza -l --icons"
-# List all files colorized in long format, excluding . and ..
-alias la="eza -la --icons"
+alias -g ls="eza --icons"
+alias ll="ls -l"
+alias la="ls -al"
 
-# grepの色設定
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-alias grep='rg'
+alias -g grep='rg'
 alias cat='bat'
 # zsh ########################################################################################################################################################################################################################
 case "${OSTYPE}" in
