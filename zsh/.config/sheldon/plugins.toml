@@ -26,6 +26,10 @@ fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+# 補完機能を有効化
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
 # 自動補完プラグイン
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
