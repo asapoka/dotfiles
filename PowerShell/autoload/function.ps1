@@ -17,15 +17,6 @@ function dot {
     code $env:USERPROFILE/dotfiles
 }
 
-function ls {
-    eza --icons --git
-}  
-function ll {
-    eza --icons --git -l
-}  
-function la {
-    eza --icons --git -la
-}  
 
 function .. {
     Set-Location ..

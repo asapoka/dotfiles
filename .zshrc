@@ -31,11 +31,11 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# lsの色設定
-# Always use color output for `ls`
-alias -g ls="eza --icons"
-alias ll="ls -l"
-alias la="ls -al"
+# alias lsd
+alias -g ls='lsd'
+alias ll='ls -l'
+alias la='ls -a'
+alias lt='ls -t'
 
 alias -g grep='rg'
 alias cat='bat'

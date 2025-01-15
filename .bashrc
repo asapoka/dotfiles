@@ -13,12 +13,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-#alias eza
-alias ls="eza --icons"
-# List all files colorized in long format
-alias ll="eza -l --icons"
-# List all files colorized in long format, excluding . and ..
-alias la="eza -la --icons"
+# alias lsd
+alias -g ls='lsd'
+alias ll='ls -l'
+alias la='ls -a'
+alias lt='ls -t'
+
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.

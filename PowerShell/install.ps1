@@ -51,7 +51,7 @@ if ($IsWindows) {
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
     }
     check_command fzf junegunn.fzf 
-    check_command eza eza-community.eza
+    check_command lsd lsd-rs.lsd
     check_command starship Starship.Starship
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
