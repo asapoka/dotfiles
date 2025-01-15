@@ -1,5 +1,4 @@
 if ($env:http_proxy) {
-
     # プロキシURLからユーザー名などを抽出する正規表現
     $regex = "^(.*?):(.*?)@(.*?):(\d+)$"
 
@@ -14,8 +13,7 @@ if ($env:http_proxy) {
         $proxyPort = [int]$match.Matches.Groups[4].Value
     }
     # 環境変数
-    $proxyAddressWithAuthenticattion = "http://$($proxyUser):$($proxyPassword)@$($proxyhost):$(proxyPort)"
-    $env:http_proxy = $proxyAddressWithAuthenticattion
+    $proxyAddressWithAuthenticattion = "http://$($proxyUser):$($proxyPassword)@$($proxyhost):$($proxyPort)"
     $env:https_proxy = $proxyAddressWithAuthenticattion
     $env:ftp_proxy = $proxyAddressWithAuthenticattion
 
