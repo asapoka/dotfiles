@@ -17,7 +17,12 @@ function dot {
     code $env:USERPROFILE/dotfiles
 }
 
-
+function ll {
+    lsd -l
+}  
+function la {
+    lsd -la
+}  
 function .. {
     Set-Location ..
 }
