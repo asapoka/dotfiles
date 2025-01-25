@@ -42,14 +42,8 @@ function install_command() {
 }
 
 has() {
-    type "$1" > /dev/null 2>&1
+  type "$1" >/dev/null 2>&1
 }
-
-DOT_DIRECTORY=$(
-  cd $(dirname $0)
-  pwd
-)
-
 
 DOT_DIR="$HOME/dotfiles"
 
@@ -88,36 +82,34 @@ else
     [[ ${f} = ".gitignore" ]] && continue
     [[ ${f} = ".DS_Store" ]] && continue
     [[ ${f} = ".vscode" ]] && continue
-    ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+    ln -snfv ${DOT_DIR}/${f} ${HOME}/${f}
   done
 
   # starship
   if [ ! -d ${HOME}/.config ]; then
     warning ".config/sheldon directory not found. create ~/.config/sheldon"
     mkdir -p ${HOME}/.config
-    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+    ln -snfv ${DOT_DIR}/starship.toml ${HOME}/.config/starship.toml
   else
-    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+    ln -snfv ${DOT_DIR}/starship.toml ${HOME}/.config/starship.toml
   fi
 
   # sheldon
   if [ ! -d ${HOME}/.config/sheldon ]; then
     warning ".config/sheldon directory not found. create ~/.config/sheldon"
     mkdir -p ${HOME}/.config/sheldon
-    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+    ln -snfv ${DOT_DIR}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   else
-    ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+    ln -snfv ${DOT_DIR}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   fi
-
-
 
   # alacritty
   if [ ! -d ${HOME}/.config/alacritty ]; then
     warning ".config/alacritty directory not found. create ~/.config/alacritty"
     mkdir -p ${HOME}/.config/alacritty
-    ln -snfv ${DOT_DIRECTORY}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
+    ln -snfv ${DOT_DIR}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
   else
-    ln -snfv ${DOT_DIRECTORY}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
+    ln -snfv ${DOT_DIR}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
   fi
 
   # brew eval
