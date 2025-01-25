@@ -41,10 +41,15 @@ function install_command() {
   fi
 }
 
+has() {
+    type "$1" > /dev/null 2>&1
+}
+
 DOT_DIRECTORY=$(
   cd $(dirname $0)
   pwd
 )
+
 
 DOT_DIR="$HOME/dotfiles"
 
