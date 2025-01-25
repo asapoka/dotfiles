@@ -64,18 +64,9 @@ if [ ! -d ${DOT_DIR} ]; then
     echo "curl or wget or git required"
     exit 1
   fi
+fi
 
-  if [ $(uname) == "Linux" ]; then
-    DOT_DIR="$DOT_DIR/linux"
-  elif [ $(uname) == "Darwin" ]; then
-    DOT_DIR="$DOT_DIR/mac"
-  else
-    echo "Unknown OS"
-    exit 1
-  fi
-else
-
-  title "Creating symlinks"
+title "Creating symlinks"
   for f in .??*; do
     # 無視したいファイルやディレクトリはこんな風に追加してね
     [[ ${f} = ".git" ]] && continue
@@ -133,5 +124,8 @@ else
   install_command mise
 
   success "Deploy dotfiles complete!"
+
+
+  
 
 fi
