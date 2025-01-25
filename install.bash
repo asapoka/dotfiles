@@ -46,6 +46,8 @@ DOT_DIRECTORY=$(
   pwd
 )
 
+DOT_DIR="$HOME/dotfiles"
+
 if [ ! -d ${DOT_DIR} ]; then
   if has "git"; then
     git clone https://github.com/asapoka/dotfiles.git ${DOT_DIR}
