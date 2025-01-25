@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOTFILES="$(pwd)"
+DOT_DIR="$HOME/dotfiles"
 COLOR_GRAY="\033[1;38;5;243m"
 COLOR_BLUE="\033[1;34m"
 COLOR_GREEN="\033[1;32m"
@@ -32,7 +32,7 @@ success() {
 }
 
 # install command if command is not installed
-function install_command() {
+install_command() {
   if ! command -v $1 >/dev/null 2>&1; then
     title "brew install"
     info "Installing... $1"
@@ -45,9 +45,9 @@ has() {
   type "$1" >/dev/null 2>&1
 }
 
-DOT_DIR="$HOME/dotfiles"
-
+# dotfilesディレクトリが無い場合git cloneする
 if [ ! -d ${DOT_DIR} ]; then
+  info "dotfiles doesn't exist so get it"
   if has "git"; then
     git clone https://github.com/asapoka/dotfiles.git ${DOT_DIR}
   elif has "curl" || has "wget"; then
@@ -61,7 +61,7 @@ if [ ! -d ${DOT_DIR} ]; then
     rm -f master.tar.gz
     mv -f dotfiles-master "${DOT_DIR}"
   else
-    echo "curl or wget or git required"
+    error "curl or wget or git required"
     exit 1
   fi
 fi
