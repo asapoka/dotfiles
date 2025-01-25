@@ -84,22 +84,25 @@ else
     ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
   done
 
+  # starship
+  if [ ! -d ${HOME}/.config ]; then
+    warning ".config/sheldon directory not found. create ~/.config/sheldon"
+    mkdir -p ${HOME}/.config
+    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+  else
+    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
+  fi
+
+  # sheldon
   if [ ! -d ${HOME}/.config/sheldon ]; then
     warning ".config/sheldon directory not found. create ~/.config/sheldon"
-    mkdir ${HOME}/.config/sheldon
+    mkdir -p ${HOME}/.config/sheldon
     ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   else
     ln -snfv ${DOT_DIRECTORY}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
   fi
 
-  # starship
-  if [ ! -d ${HOME}/.config ]; then
-    warning ".config/sheldon directory not found. create ~/.config/sheldon"
-    mkdir ${HOME}/.config
-    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
-  else
-    ln -snfv ${DOT_DIRECTORY}/starship.toml ${HOME}/.config/starship.toml
-  fi
+
 
   # alacritty
   if [ ! -d ${HOME}/.config/alacritty ]; then
