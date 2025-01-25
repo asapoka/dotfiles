@@ -66,6 +66,7 @@ if [ ! -d ${DOT_DIR} ]; then
   fi
 fi
 
+cd ${DOT_DIR}
 title "Creating symlinks"
 for f in .??*; do
   # 無視したいファイルやディレクトリはこんな風に追加してね
