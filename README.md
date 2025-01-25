@@ -5,8 +5,7 @@
 Linux and macOS
 
 ```bash
-cd dotfiles
-bash install.bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/asapoka/dotfiles/master/install.bash)"
 ```
 
 Windows
