@@ -35,6 +35,16 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
 # インストール処理
 # windows
 if ($IsWindows) {
+    $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
+    if (Test-Path $DOT_DIR) {
+        # dotfilesの存在チェック
+    } else {
+        # 無い場合は取得する
+        #git がある場合
+        if (Get-Command git -ea SilentlyContinue) { 
+            git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
+        }
+    }
     $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
     $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
     $ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
@@ -55,7 +65,19 @@ if ($IsWindows) {
     check_command starship Starship.Starship
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
+    $DOT_DIR = Join-Path ~ dotfiles
+    $vscode = Join-Path ~ .config PowerShel Microsoft.VSCode_profile.ps1
+
+    if (Test-Path $DOT_DIR) {
+    } else {
+        # 無い場合は取得する
+        #git がある場合
+        if (Get-Command git -ea SilentlyContinue) { 
+            git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
+        }
+    }
     install_profile($PROFILE)
+    install_profile($vscode)
     check_installedModule PSfzf
 }
 

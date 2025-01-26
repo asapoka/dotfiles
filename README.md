@@ -11,8 +11,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/asapoka/dotfiles/master/
 Windows
 
 ```pwsh
-cd dotfiles/Powershell
-sudo install.ps1
+iwr "https://raw.githubusercontent.com/asapoka/dotfiles/refs/heads/master/PowerShell/install.ps1" | iex
 ```
 
 ## Terminal で使っているフォント
