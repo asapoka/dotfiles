@@ -3,7 +3,12 @@ function install_profile {
     param (
         $path
     )
-    New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item ".\Microsoft.PowerShell_profile.ps1").FullName -Force
+    if ($IsWindows) {
+        $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
+    } elseif ($IsMacOS -or $IsLinux) {
+        $DOT_DIR = Join-Path ~ dotfiles
+    }
+    New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR PowerShell "Microsoft.PowerShell_profile.ps1")).FullName -Force
 }
 # コマンドがインストールされていなければwingetでインストールする関数
 function check_command {
