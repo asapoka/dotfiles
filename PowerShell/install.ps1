@@ -53,11 +53,14 @@ if ($IsWindows) {
         #git がある場合
         if (Get-Command git -ea SilentlyContinue) { 
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
+        } else {
+            Write-Output "need git command!"
+            exit 0
         }
     }
-    $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-    $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1
-    $ps = Join-Path  $env:USERPROFILE \Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 #古いpsは使わないから不要かも
+
+    $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1 # pwsh.exe
+    $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1 # vscode
 
     install_profile($pwsh)
     install_profile($vscode)
