@@ -66,6 +66,7 @@ if ($IsWindows) {
     install_profile($vscode)
     install_profile($ps)
 
+    # starship
     $starship = Join-Path $env:USERPROFILE .config starship.toml
     if (Test-Path (Join-Path $env:USERPROFILE .config)) {
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
@@ -79,7 +80,6 @@ if ($IsWindows) {
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
     $DOT_DIR = Join-Path ~ dotfiles
-    $vscode = Join-Path ~ .config PowerShel Microsoft.VSCode_profile.ps1
 
     if (Test-Path $DOT_DIR) {
     } else {
@@ -89,6 +89,9 @@ if ($IsWindows) {
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
         }
     }
+
+    $vscode = Join-Path ~ .config PowerShel Microsoft.VSCode_profile.ps1
+
     install_profile($PROFILE)
     install_profile($vscode)
     check_installedModule PSfzf
