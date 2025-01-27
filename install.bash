@@ -122,6 +122,5 @@ install_command sheldon
 install_command starship
 install_command lsd
 install_command fzf
-install_command mise
 
 success "Deploy dotfiles complete!"
