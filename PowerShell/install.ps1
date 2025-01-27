@@ -40,6 +40,11 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
 # インストール処理
 # windows
 if ($IsWindows) {
+    # 管理者権限出ない場合は管理者権限に昇格する
+    if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
+        Start-Process pwsh.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit 
+    }
+
     $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
     if (Test-Path $DOT_DIR) {
         # dotfilesの存在チェック
