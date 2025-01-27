@@ -20,5 +20,9 @@ iwr "https://raw.githubusercontent.com/asapoka/dotfiles/refs/heads/master/PowerS
 'HackGen Console NF'
 ```
 
+```
+brew install font-hackgen-nerd
+```
+
 download from
 <https://github.com/yuru7/HackGen/releases>
