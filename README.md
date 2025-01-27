@@ -16,13 +16,12 @@ iwr "https://raw.githubusercontent.com/asapoka/dotfiles/refs/heads/master/PowerS
 
 ## Terminal で使っているフォント
 
+[yuru7/HackGen](https://github.com/yuru7/HackGen/releases)
+
 ```font
 'HackGen Console NF'
 ```
 
-```
+```bash
 brew install font-hackgen-nerd
 ```
-
-download from
-<https://github.com/yuru7/HackGen/releases>
