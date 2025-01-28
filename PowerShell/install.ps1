@@ -64,7 +64,6 @@ if ($IsWindows) {
 
     install_profile($pwsh)
     install_profile($vscode)
-    install_profile($ps)
 
     # starship
     $starship = Join-Path $env:USERPROFILE .config starship.toml
