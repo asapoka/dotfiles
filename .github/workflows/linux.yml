@@ -1,4 +1,4 @@
-name: Makefile CI
+name: install linux
 
 on: workflow_dispatch
 
