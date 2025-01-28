@@ -1,0 +1,12 @@
+name: install mac
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: install
+        run: bash ./install.bash
