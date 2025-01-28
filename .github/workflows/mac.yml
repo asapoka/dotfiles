@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: install
-        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/asapoka/dotfiles/master/install.bash)"
+        run: bash ./install.bash
