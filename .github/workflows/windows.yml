@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install
-        run: ./PowerShell/install.ps1
+        run: cd PowerShell && ./install.ps1
