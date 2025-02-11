@@ -33,11 +33,21 @@ success() {
 
 # install command if command is not installed
 install_command() {
-  if ! command -v $1 >/dev/null 2>&1; then
-    title "brew install"
-    info "Installing... $1"
-    brew install $1
-    info "Installed $1"
+  if has "cargo"; then
+    if ! command -v $1 >/dev/null 2>&1; then
+      title "cargo install"
+      info "Installing... $1"
+      cargo install $1 --locked
+      info "Installed $1"
+    fi
+  fi
+  if has "brew"; then
+    if ! command -v $1 >/dev/null 2>&1; then
+      title "brew install"
+      info "Installing... $1"
+      brew install $1
+      info "Installed $1"
+    fi
   fi
 }
 
@@ -105,19 +115,21 @@ else
 fi
 
 # brew eval
-case "${OSTYPE}" in
-darwin*)
-  # Mac
-  # brew path
-  eval $(/opt/homebrew/bin/brew shellenv)
-  ;;
-linux*)
-  # Linux
-  # brew path
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  ;;
-esac
-
+if has "brew"; then
+  case "${OSTYPE}" in
+  darwin*)
+    # Mac
+    # brew path
+    eval $(/opt/homebrew/bin/brew shellenv)
+    ;;
+  linux*)
+    # Linux
+    # brew path
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    ;;
+  esac
+fi
+ 
 install_command sheldon
 install_command starship
 install_command lsd
