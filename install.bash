@@ -116,7 +116,7 @@ fi
 
 # brew eval
 if has "brew"; then
-  case "${OSTYPE}" in
+  case $(uname) in
   darwin*)
     # Mac
     # brew path
@@ -129,7 +129,7 @@ if has "brew"; then
     ;;
   esac
 fi
- 
+
 install_command sheldon
 install_command starship
 install_command lsd
