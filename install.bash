@@ -33,14 +33,6 @@ success() {
 
 # install command if command is not installed
 install_command() {
-  if has "cargo"; then
-    if ! command -v $1 >/dev/null 2>&1; then
-      title "cargo install"
-      info "Installing... $1"
-      cargo install $1 --locked
-      info "Installed $1"
-    fi
-  fi
   if has "brew"; then
     if ! command -v $1 >/dev/null 2>&1; then
       title "brew install"
