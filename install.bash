@@ -106,6 +106,13 @@ else
   ln -snfv ${DOT_DIR}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 fi
 
+# nvim
+if [ ! -d ${HOME}/.config ]; then
+  ln -s ${DOT_DIR}/nvim ${HOME}/.config
+else
+  ln -s ${DOT_DIR}/nvim ${HOME}/.config
+fi
+
 # brew eval
 if has "brew"; then
   case $(uname) in
