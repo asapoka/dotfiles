@@ -134,5 +134,5 @@ install_command starship
 install_command lsd
 install_command fzf
 install_command bat
-
+install_command fd 
 success "Deploy dotfiles complete!"
