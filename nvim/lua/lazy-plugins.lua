@@ -27,6 +27,8 @@ require('lazy').setup({
   require 'plugins/treesitter',
 
   require 'plugins/vimdoc-ja', -- japanese vim doc
+
+  require("plugins/noice")
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
