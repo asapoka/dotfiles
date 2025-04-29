@@ -28,7 +28,11 @@ require('lazy').setup({
 
   require 'plugins/vimdoc-ja', -- japanese vim doc
 
-  require("plugins/noice")
+  require("plugins/noice"),
+
+  require("plugins/lazygit"),
+
+  require("plugins/toggleterm"),
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
