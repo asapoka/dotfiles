@@ -8,7 +8,7 @@ COLOR_RED="\033[1;31m"
 COLOR_PURPLE="\033[1;35m"
 COLOR_YELLOW="\033[1;33m"
 COLOR_NONE="\033[0m"
-
+set -euo pipefail
 title() {
   echo -e "\n${COLOR_PURPLE}$1${COLOR_NONE}"
   echo -e "${COLOR_GRAY}==============================${COLOR_NONE}\n"
@@ -79,38 +79,46 @@ for f in .??*; do
   ln -snfv ${DOT_DIR}/${f} ${HOME}/${f}
 done
 
+#zsh
+ln -snfv ${DOT_DIR}/configs/shell/.zshrc ${HOME}/.zshrc
+
+#git
+ln -snfv ${DOT_DIR}/configs/git/.gitconfig ${HOME}/.gitconfig
+
+# ripgrep
+ln -snfv ${DOT_DIR}/tools/ripgrep/.ripgreprc ${HOME}/.ripgreprc
 # starship
 if [ ! -d ${HOME}/.config ]; then
   warning ".config/sheldon directory not found. create ~/.config/sheldon"
   mkdir -p ${HOME}/.config
-  ln -snfv ${DOT_DIR}/starship.toml ${HOME}/.config/starship.toml
+  ln -snfv ${DOT_DIR}/configs/terminal/starship.toml ${HOME}/.config/starship.toml
 else
-  ln -snfv ${DOT_DIR}/starship.toml ${HOME}/.config/starship.toml
+  ln -snfv ${DOT_DIR}/configs/terminal/starship.toml ${HOME}/.config/starship.toml
 fi
 
 # sheldon
 if [ ! -d ${HOME}/.config/sheldon ]; then
   warning ".config/sheldon directory not found. create ~/.config/sheldon"
   mkdir -p ${HOME}/.config/sheldon
-  ln -snfv ${DOT_DIR}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+  ln -snfv ${DOT_DIR}/tools/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 else
-  ln -snfv ${DOT_DIR}/zsh/.config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
+  ln -snfv ${DOT_DIR}/tools/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 fi
 
 # alacritty
 if [ ! -d ${HOME}/.config/alacritty ]; then
   warning ".config/alacritty directory not found. create ~/.config/alacritty"
   mkdir -p ${HOME}/.config/alacritty
-  ln -snfv ${DOT_DIR}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
+  ln -snfv ${DOT_DIR}/configs/terminal/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 else
   ln -snfv ${DOT_DIR}/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 fi
 
 # nvim
 if [ ! -d ${HOME}/.config ]; then
-  ln -s ${DOT_DIR}/nvim ${HOME}/.config
+  ln -s ${DOT_DIR}/configs/editor/nvim ${HOME}/.config
 else
-  ln -s ${DOT_DIR}/nvim ${HOME}/.config
+  ln -s ${DOT_DIR}/configs/editor/nvim ${HOME}/.config
 fi
 
 # brew eval
@@ -134,5 +142,5 @@ install_command starship
 install_command lsd
 install_command fzf
 install_command bat
-install_command fd 
+install_command fd
 success "Deploy dotfiles complete!"

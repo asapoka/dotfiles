@@ -5,7 +5,7 @@
 Linux and macOS
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/asapoka/dotfiles/master/install.bash)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/asapoka/dotfiles/master/scripts/install.bash)"
 ```
 
 Windows
