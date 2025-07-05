@@ -6,10 +6,10 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
 # TODO 固定パスなのをどうにかしたい
 #Windows
 if ($IsWindows) {
-    $psdir = Join-Path $env:USERPROFILE dotfiles PowerShell autoload
+    $psdir = Join-Path $env:USERPROFILE dotfiles config powershell autoload
 } else {
     # other os
-    $psdir = Join-Path $HOME dotfiles PowerShell autoload
+    $psdir = Join-Path $HOME dotfiles config powershell autoload
 }
 # 保存場所にある全てのps1スクリプトを読み込む
 Get-ChildItem "${psdir}\*.ps1" | ForEach-Object { .$_ }
