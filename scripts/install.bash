@@ -47,7 +47,7 @@ cd ${DOT_DIR}
 title "Creating symlinks"
 
 # home directory configs
-ln -snfv ${DOT_DIR}/home/.zshrc ${HOME}/.zshrc
+ln -snfv ${DOT_DIR}/config/zsh/.zshrc ${HOME}/.zshrc
 ln -snfv ${DOT_DIR}/home/.gitconfig ${HOME}/.gitconfig
 ln -snfv ${DOT_DIR}/home/.ripgreprc ${HOME}/.ripgreprc
 # ~/.config directory
