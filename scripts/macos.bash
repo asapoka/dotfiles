@@ -7,23 +7,22 @@
 # Finderで隠しファイルを表示する
 defaults write com.apple.finder AppleShowAllFiles YES
 
-# Set `${HOME}` as the default location for new Finder windows
-# 新しいウィンドウでデフォルトでホームフォルダを開く
+# 新しいFinderウィンドウでデフォルトでホームフォルダを開く
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
-# Show Status bar in Finder （ステータスバーを表示）
+# Finderでステータスバーを表示
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Show Path bar in Finder （パスバーを表示）
+# Finderでパスバーを表示
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Show Tab bar in Finder （タブバーを表示）
+# Finderでタブバーを表示
 defaults write com.apple.finder ShowTabView -bool true
 
-# Show the ~/Library directory （ライブラリディレクトリを表示、デフォルトは非表示）
+# ~/Libraryディレクトリを表示（デフォルトは非表示）
 chflags nohidden ~/Library
 
-# Show the hidden files （不可視ファイルを表示）
+# 不可視ファイルを表示
 defaults write com.apple.finder AppleShowAllFiles YES
 
 # Finder を CMD Q で閉じる
@@ -44,23 +43,23 @@ defaults write com.apple.dock tilesize -int 50
 defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock persistent-apps -array
 
-# Hot corners
-# Possible values:
-#  0: no-op
+# ホットコーナー
+# 設定可能な値:
+#  0: 何もしない
 #  2: Mission Control
-#  3: Show application windows
-#  4: Desktop
-#  5: Start screen saver
-#  6: Disable screen saver
+#  3: アプリケーションウィンドウを表示
+#  4: デスクトップ
+#  5: スクリーンセーバー開始
+#  6: スクリーンセーバー無効
 #  7: Dashboard
-# 10: Put display to sleep
+# 10: ディスプレイをスリープ
 # 11: Launchpad
-# 12: Notification Center
-# 13: Lock Screen
-# Top right screen corner → Desktop
+# 12: 通知センター
+# 13: 画面をロック
+# 右上角 → デスクトップ
 defaults write com.apple.dock wvous-tr-corner -int 4
 defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Start screen saver
+# 左下角 → スクリーンセーバー開始
 defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
@@ -84,23 +83,23 @@ systemsetup -setremotelogin on
 # 未確認のアプリケーションを実行する際のダイアログを無効にする
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Save screenshots as PNGs （スクリーンショット保存形式をPNGにする）
+# スクリーンショットをPNG形式で保存
 defaults write com.apple.screencapture type -string "png"
 
-# Enable the automatic update check
+# 自動アップデートチェックを有効にする
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Check for software updates daily, not just once per week
+# ソフトウェアアップデートを週1回ではなく毎日チェック
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# Download newly available updates in background
+# 利用可能なアップデートをバックグラウンドでダウンロード
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
-# Install System data files & security updates
+# システムデータファイルとセキュリティアップデートをインストール
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
-# Turn on app auto-update
+# アプリの自動アップデートを有効にする
 defaults write com.apple.commerce AutoUpdate -bool true
 
-# Allow the App Store to reboot machine on macOS updates
+# macOSアップデート時にApp Storeが再起動を実行することを許可
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
