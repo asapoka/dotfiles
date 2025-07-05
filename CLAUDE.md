@@ -40,6 +40,7 @@ brew install font-hackgen-nerd
   - `sheldon/plugins.toml` - Zsh plugin manager configuration
   - `nvim/` - Neovim configuration (Kickstart.nvim based)
   - `powershell/` - PowerShell configuration and modules
+  - `zsh/` - Modular Zsh configuration with separate files for aliases, core settings, environment, and initialization
 - `scripts/` - Installation and configuration scripts
   - `install.bash` - Main Unix/Linux installation script
   - `install.ps1` - Windows PowerShell installation script
@@ -74,6 +75,38 @@ Core tools installed via the installation script:
 - PowerShell autoload system for Windows
 - Backs up existing configurations before deployment
 - Platform detection using `$OSTYPE` and PowerShell built-in variables
+
+## Development Commands
+
+**Installation (Unix/Linux/macOS):**
+```bash
+bash scripts/install.bash
+```
+
+**Installation (Windows):**
+```powershell
+powershell scripts/install.ps1
+```
+
+**Testing configuration:**
+```bash
+# Test zsh configuration
+zsh -n config/zsh/.zshrc
+
+# Test PowerShell configuration
+powershell -NoProfile -Command "& { try { . config/powershell/Microsoft.PowerShell_profile.ps1 } catch { Write-Error $_.Exception.Message } }"
+```
+
+**Development workflow:**
+```bash
+# Install and test changes locally
+bash scripts/install.bash
+source ~/.zshrc  # reload shell configuration
+
+# Check symlinks
+ls -la ~ | grep dotfiles
+ls -la ~/.config | grep dotfiles
+```
 
 ## Development Notes
 
