@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # ログインシェルをzshに変更する
 # chsh -s /bin/zsh
