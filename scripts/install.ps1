@@ -28,7 +28,7 @@ function check_installedModule {
     )
     Get-InstalledModule $name | Out-Null
     if ($? -eq $false) {
-        Write-Host Installing... $command
+        Write-Host Installing... $name
         Install-Module $name
     } 
 }
