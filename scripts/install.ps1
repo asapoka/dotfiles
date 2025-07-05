@@ -89,7 +89,7 @@ if ($IsWindows) {
         }
     }
 
-    $vscode = Join-Path ~ .config PowerShel Microsoft.VSCode_profile.ps1
+    $vscode = Join-Path ~ .config PowerShell Microsoft.VSCode_profile.ps1
 
     install_profile($PROFILE)
     install_profile($vscode)
