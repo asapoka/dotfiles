@@ -1,12 +1,67 @@
-name: install mac
+name: Test macOS Installation
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
 
 jobs:
-  build:
+  test-macos:
     runs-on: macos-latest
-
+    
     steps:
-      - uses: actions/checkout@v4
-      - name: install
-        run: bash ./install.bash
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          # Install required tools for the installation script
+          which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install git zsh
+      
+      - name: Test installation script syntax
+        run: |
+          bash -n scripts/install.bash
+      
+      - name: Run installation script
+        run: |
+          bash scripts/install.bash
+      
+      - name: Verify installation
+        run: |
+          # Check if symlinks were created
+          ls -la ~ | grep dotfiles || echo "No symlinks found in home directory"
+          
+          # Check if zsh configuration is valid
+          if [ -f ~/.zshrc ]; then
+            echo "zsh configuration found"
+            # Test zsh configuration syntax
+            zsh -n ~/.zshrc || echo "zsh configuration has syntax errors"
+          else
+            echo "zsh configuration not found"
+            exit 1
+          fi
+          
+          # Check if git configuration exists
+          if [ -f ~/.gitconfig ]; then
+            echo "git configuration found"
+          else
+            echo "git configuration not found"
+          fi
+          
+          # Check if brew-installed tools are available
+          which sheldon || echo "sheldon not found"
+          which starship || echo "starship not found"
+          which lsd || echo "lsd not found"

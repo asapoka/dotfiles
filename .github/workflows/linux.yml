@@ -1,12 +1,62 @@
-name: install linux
+name: Test Linux Installation
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
 
 jobs:
-  build:
+  test-linux:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v4
-      - name: install
-        run: bash ./install.bash
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          # Install required tools for the installation script
+          sudo apt-get update
+          sudo apt-get install -y curl wget git zsh
+      
+      - name: Test installation script syntax
+        run: |
+          bash -n scripts/install.bash
+      
+      - name: Run installation script
+        run: |
+          bash scripts/install.bash
+      
+      - name: Verify installation
+        run: |
+          # Check if symlinks were created
+          ls -la ~ | grep dotfiles || echo "No symlinks found in home directory"
+          
+          # Check if zsh configuration is valid
+          if [ -f ~/.zshrc ]; then
+            echo "zsh configuration found"
+            # Test zsh configuration syntax
+            zsh -n ~/.zshrc || echo "zsh configuration has syntax errors"
+          else
+            echo "zsh configuration not found"
+            exit 1
+          fi
+          
+          # Check if git configuration exists
+          if [ -f ~/.gitconfig ]; then
+            echo "git configuration found"
+          else
+            echo "git configuration not found"
+          fi

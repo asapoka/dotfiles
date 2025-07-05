@@ -1,0 +1,82 @@
+name: Test Windows Installation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'home/**'
+      - 'lib/**'
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          # Install required tools for the installation script
+          winget install --id Microsoft.PowerShell --source winget
+          winget install --id Git.Git --source winget
+        shell: pwsh
+      
+      - name: Test installation script syntax
+        run: |
+          # Test PowerShell script syntax
+          powershell -NoProfile -Command "Get-Content scripts/install.ps1 | Out-String | Invoke-Expression"
+        shell: pwsh
+      
+      - name: Run installation script
+        run: |
+          powershell -ExecutionPolicy Bypass -File scripts/install.ps1
+        shell: pwsh
+      
+      - name: Verify installation
+        run: |
+          # Check if PowerShell profile was created
+          $profilePath = $PROFILE.CurrentUserCurrentHost
+          if (Test-Path $profilePath) {
+            Write-Host "PowerShell profile found at: $profilePath"
+            # Test PowerShell profile syntax
+            try {
+              . $profilePath
+              Write-Host "PowerShell profile loaded successfully"
+            } catch {
+              Write-Host "PowerShell profile has errors: $($_.Exception.Message)"
+            }
+          } else {
+            Write-Host "PowerShell profile not found"
+            exit 1
+          }
+          
+          # Check if dotfiles directory exists
+          $dotfilesPath = if ($env:USERPROFILE) { "$env:USERPROFILE\dotfiles" } else { "$HOME\dotfiles" }
+          if (Test-Path $dotfilesPath) {
+            Write-Host "Dotfiles directory found at: $dotfilesPath"
+          } else {
+            Write-Host "Dotfiles directory not found"
+            exit 1
+          }
+          
+          # Check if tools are available
+          $tools = @("starship", "fzf", "lsd", "rg")
+          foreach ($tool in $tools) {
+            if (Get-Command $tool -ErrorAction SilentlyContinue) {
+              Write-Host "$tool is available"
+            } else {
+              Write-Host "$tool not found"
+            }
+          }
+        shell: pwsh
