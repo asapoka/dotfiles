@@ -1,3 +1,43 @@
+<#
+.SYNOPSIS
+    dotfiles PowerShell環境の自動セットアップスクリプト
+
+.DESCRIPTION
+    Windows/macOS/Linux用のPowerShell開発環境を自動的にセットアップします。
+    dotfilesリポジトリのクローン、PowerShellプロファイルの設定、
+    必要なコマンドラインツールのインストールを行います。
+
+.PARAMETER None
+    このスクリプトはパラメータを受け取りません。
+
+.EXAMPLE
+    .\install.ps1
+    ローカルファイルとして実行
+
+.EXAMPLE
+    iwr "https://raw.githubusercontent.com/asapoka/dotfiles/refs/heads/master/scripts/install.ps1" | iex
+    リモートから直接実行
+
+.NOTES
+    Author: asapoka
+    Created: 2024
+    RequiredVersion: PowerShell Core 6.0+
+    RequiredOS: Windows, macOS, Linux
+    
+    Windows環境では管理者権限が必要です。
+    gitコマンドが利用可能である必要があります。
+
+.FUNCTIONALITY
+    - dotfilesリポジトリの自動クローン
+    - PowerShellプロファイルのシンボリックリンク作成
+    - Starshipプロンプトの設定
+    - 必要なコマンドラインツールの自動インストール（fzf, lsd, starship, ripgrep）
+    - PowerShellモジュールの自動インストール（PSfzf）
+
+.LINK
+    https://github.com/asapoka/dotfiles
+#>
+
 # PowerShellプロファイルのシンボリックリンクを作成する関数
 function install_profile {
     param (
