@@ -54,47 +54,32 @@ for f in .??*; do
   ln -snfv ${DOT_DIR}/${f} ${HOME}/${f}
 done
 
-#zsh
-ln -snfv ${DOT_DIR}/configs/shell/.zshrc ${HOME}/.zshrc
-
-#git
-ln -snfv ${DOT_DIR}/configs/git/.gitconfig ${HOME}/.gitconfig
-
-# ripgrep
-ln -snfv ${DOT_DIR}/tools/ripgrep/.ripgreprc ${HOME}/.ripgreprc
-# starship
+# home directory configs
+ln -snfv ${DOT_DIR}/home/.zshrc ${HOME}/.zshrc
+ln -snfv ${DOT_DIR}/home/.gitconfig ${HOME}/.gitconfig
+ln -snfv ${DOT_DIR}/home/.ripgreprc ${HOME}/.ripgreprc
+# ~/.config directory
 if [ ! -d ${HOME}/.config ]; then
-  warning ".config/sheldon directory not found. create ~/.config/sheldon"
   mkdir -p ${HOME}/.config
-  ln -snfv ${DOT_DIR}/configs/terminal/starship.toml ${HOME}/.config/starship.toml
-else
-  ln -snfv ${DOT_DIR}/configs/terminal/starship.toml ${HOME}/.config/starship.toml
 fi
+
+# starship
+ln -snfv ${DOT_DIR}/config/starship.toml ${HOME}/.config/starship.toml
 
 # sheldon
 if [ ! -d ${HOME}/.config/sheldon ]; then
-  warning ".config/sheldon directory not found. create ~/.config/sheldon"
   mkdir -p ${HOME}/.config/sheldon
-  ln -snfv ${DOT_DIR}/tools/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
-else
-  ln -snfv ${DOT_DIR}/tools/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 fi
+ln -snfv ${DOT_DIR}/config/sheldon/plugins.toml ${HOME}/.config/sheldon/plugins.toml
 
 # alacritty
 if [ ! -d ${HOME}/.config/alacritty ]; then
-  warning ".config/alacritty directory not found. create ~/.config/alacritty"
   mkdir -p ${HOME}/.config/alacritty
-  ln -snfv ${DOT_DIR}/configs/terminal/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
-else
-  ln -snfv ${DOT_DIR}/configs/terminal/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 fi
+ln -snfv ${DOT_DIR}/config/alacritty/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 
 # nvim
-if [ ! -d ${HOME}/.config ]; then
-  ln -s ${DOT_DIR}/configs/editor/nvim ${HOME}/.config
-else
-  ln -s ${DOT_DIR}/configs/editor/nvim ${HOME}/.config
-fi
+ln -snfv ${DOT_DIR}/config/nvim ${HOME}/.config/nvim
 
 # brew eval
 if has "brew"; then

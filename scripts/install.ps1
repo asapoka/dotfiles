@@ -8,7 +8,7 @@ function install_profile {
     } elseif ($IsMacOS -or $IsLinux) {
         $DOT_DIR = Join-Path ~ dotfiles
     }
-    New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR PowerShell "Microsoft.PowerShell_profile.ps1")).FullName -Force
+    New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config powershell "Microsoft.PowerShell_profile.ps1")).FullName -Force
 }
 # コマンドがインストールされていなければwingetでインストールする関数
 function check_command {
@@ -68,10 +68,10 @@ if ($IsWindows) {
     # starship
     $starship = Join-Path $env:USERPROFILE .config starship.toml
     if (Test-Path (Join-Path $env:USERPROFILE .config)) {
-        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
+        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     } else {
         New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
-        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item "..\starship.toml").FullName -Force
+        New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     }
     check_command fzf junegunn.fzf 
     check_command lsd lsd-rs.lsd
