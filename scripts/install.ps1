@@ -49,13 +49,13 @@ if ($IsWindows) {
     if (Test-Path $DOT_DIR) {
         # dotfilesの存在チェック
     } else {
-        # 無い場合は取得する
-        #git がある場合
+        # dotfilesが存在しない場合はリポジトリをクローンする
+        # gitコマンドが利用可能な場合
         if (Get-Command git -ea SilentlyContinue) { 
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
         } else {
-            Write-Output "need git command!"
-            exit 0
+            Write-Output "gitコマンドが必要です！"
+            exit 1
         }
     }
 
