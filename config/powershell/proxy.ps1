@@ -1,3 +1,26 @@
+<#
+.SYNOPSIS
+    プロキシ設定とユーティリティ関数
+
+.DESCRIPTION
+    企業環境でのプロキシ設定と便利なユーティリティ関数を提供します。
+    主にWindows環境での開発作業を支援します。
+
+.NOTES
+    Author: asapoka
+    RequiredVersion: PowerShell Core 6.0+
+    RequiredOS: Windows (主にWindows環境向け)
+    
+    企業ネットワーク環境での使用を想定しています。
+
+.FUNCTIONALITY
+    - プロキシ設定関数
+    - Windows環境向けユーティリティ関数
+
+.LINK
+    https://github.com/asapoka/dotfiles
+#>
+
 if ($env:http_proxy) {
     # プロキシURLからユーザー名などを抽出する正規表現
     $regex = "^(.*?):(.*?)@(.*?):(\d+)$"

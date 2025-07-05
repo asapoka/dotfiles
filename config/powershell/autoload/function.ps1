@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+    PowerShell カスタム関数定義
+
+.DESCRIPTION
+    PowerShell環境で使用するカスタム関数を定義します。
+    開発作業やシステム管理を効率化する便利な関数を提供します。
+
+.NOTES
+    Author: asapoka
+    RequiredVersion: PowerShell Core 6.0+
+    RequiredOS: Windows, macOS, Linux
+    
+    このファイルはMicrosoft.PowerShell_profile.ps1から自動読み込みされます。
+
+.FUNCTIONALITY
+    - ファイル操作関数
+    - ディレクトリナビゲーション関数
+    - 開発作業支援関数
+    - システム情報取得関数
+
+.LINK
+    https://github.com/asapoka/dotfiles
+#>
+
 # 環境変数を表示
 function env {
     Get-ChildItem env:    

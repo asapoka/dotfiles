@@ -1,4 +1,32 @@
-# PowerShel Core でなければ終了
+<#
+.SYNOPSIS
+    PowerShell Coreプロファイル設定ファイル
+
+.DESCRIPTION
+    PowerShell Coreの個人用プロファイル設定です。
+    autoloadディレクトリから関数、エイリアス、winget設定を自動読み込みし、
+    Starship、PSfzf、PSReadLineの設定を行います。
+
+.NOTES
+    Author: asapoka
+    RequiredVersion: PowerShell Core 6.0+
+    RequiredOS: Windows, macOS, Linux
+    
+    このファイルはPowerShell起動時に自動的に読み込まれます。
+    Starship、Sheldon、PSfzfモジュールが必要です。
+
+.FUNCTIONALITY
+    - PowerShell Coreバージョンチェック
+    - autoloadディレクトリからスクリプトの自動読み込み
+    - PSReadLineキーバインド設定
+    - PSfzf統合設定
+    - Starshipプロンプト初期化
+
+.LINK
+    https://github.com/asapoka/dotfiles
+#>
+
+# PowerShell Core でなければ終了
 if ( $PSVersionTable.PSEdition -ne 'Core') {
     exit
 }
