@@ -76,6 +76,7 @@ if ($IsWindows) {
     check_command fzf junegunn.fzf 
     check_command lsd lsd-rs.lsd
     check_command starship Starship.Starship
+    check_command rg BurntSushi.ripgrep
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
     $DOT_DIR = Join-Path ~ dotfiles
