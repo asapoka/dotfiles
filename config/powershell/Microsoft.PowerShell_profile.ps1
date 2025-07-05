@@ -12,7 +12,7 @@ if ($IsWindows) {
     $psdir = Join-Path $HOME dotfiles config powershell autoload
 }
 # 保存場所にある全てのps1スクリプトを読み込む
-Get-ChildItem "${psdir}\*.ps1" | ForEach-Object { .$_ }
+Get-ChildItem (Join-Path $psdir "*.ps1") | ForEach-Object { .$_ }
 
 # Ctrl + f で入力補完を確定、次の候補を選択
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptSuggestion
