@@ -24,5 +24,5 @@ bold_italic = { family = "HackGen Console NF", style="Bold Italic" }
 
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/blood_moon.toml"
+    "~/.config/alacritty/themes/blood_moon.toml"
 ]
