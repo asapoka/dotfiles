@@ -85,21 +85,27 @@ if ($IsWindows) {
     # PowerShellモジュールをインストール
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
+    # macOS/Linux環境の場合
     $DOT_DIR = Join-Path ~ dotfiles
 
+    # dotfilesディレクトリの存在確認
     if (Test-Path $DOT_DIR) {
+        # 既に存在する場合は何もしない
     } else {
-        # 無い場合は取得する
-        #git がある場合
+        # dotfilesが存在しない場合はリポジトリをクローンする
         if (Get-Command git -ea SilentlyContinue) { 
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
         }
     }
 
+    # VS Code用PowerShellプロファイルのパス設定
     $vscode = Join-Path ~ .config PowerShell Microsoft.VSCode_profile.ps1
 
+    # PowerShellプロファイルのシンボリックリンクを作成
     install_profile($PROFILE)
     install_profile($vscode)
+    
+    # PowerShellモジュールをインストール
     check_installedModule PSfzf
 }
 
