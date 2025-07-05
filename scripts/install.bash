@@ -45,14 +45,6 @@ fi
 
 cd ${DOT_DIR}
 title "Creating symlinks"
-for f in .??*; do
-  # 無視したいファイルやディレクトリはこんな風に追加してね
-  [[ ${f} = ".git" ]] && continue
-  [[ ${f} = ".gitignore" ]] && continue
-  [[ ${f} = ".DS_Store" ]] && continue
-  [[ ${f} = ".vscode" ]] && continue
-  ln -snfv ${DOT_DIR}/${f} ${HOME}/${f}
-done
 
 # home directory configs
 ln -snfv ${DOT_DIR}/home/.zshrc ${HOME}/.zshrc
