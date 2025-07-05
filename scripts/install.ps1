@@ -1,4 +1,4 @@
-# シンボリックリンクを作成する関数
+# PowerShellプロファイルのシンボリックリンクを作成する関数
 function install_profile {
     param (
         $path
@@ -10,7 +10,7 @@ function install_profile {
     }
     New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config powershell "Microsoft.PowerShell_profile.ps1")).FullName -Force
 }
-# コマンドがインストールされていなければwingetでインストールする関数
+# コマンドがインストールされていない場合はwingetでインストールする関数
 function check_command {
     param (
         $command , $id
@@ -21,7 +21,7 @@ function check_command {
         winget install --id $id --accept-package-agreements
     } 
 }
-# Powershell-Moduleがインストールされてなければインストールする関数
+# PowerShellモジュールがインストールされていない場合はインストールする関数
 function check_installedModule {
     param (
         $name
@@ -32,22 +32,22 @@ function check_installedModule {
         Install-Module $name
     } 
 }
-# PowerShel Core でなければ終了
+# PowerShell Core でない場合は終了
 if ( $PSVersionTable.PSEdition -ne 'Core') {
     exit
 }
 
-# インストール処理
-# windows
+# メインのインストール処理
+# Windows環境の場合
 if ($IsWindows) {
-    # 管理者権限出ない場合は管理者権限に昇格する
+    # 管理者権限でない場合は管理者権限に昇格する
     if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
         Start-Process pwsh.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit 
     }
 
     $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
     if (Test-Path $DOT_DIR) {
-        # dotfilesの存在チェック
+        # dotfilesディレクトリが既に存在する場合は何もしない
     } else {
         # dotfilesが存在しない場合はリポジトリをクローンする
         # gitコマンドが利用可能な場合
@@ -59,24 +59,30 @@ if ($IsWindows) {
         }
     }
 
-    $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1 # pwsh.exe
-    $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1 # vscode
+    # PowerShellプロファイルのパス設定
+    $pwsh = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.PowerShell_profile.ps1   # PowerShell Core用
+    $vscode = Join-Path $env:USERPROFILE \Documents\PowerShell\Microsoft.VSCode_profile.ps1     # VS Code用
 
+    # PowerShellプロファイルのシンボリックリンクを作成
     install_profile($pwsh)
     install_profile($vscode)
 
-    # starship
+    # Starshipプロンプトの設定ファイルをシンボリックリンク
     $starship = Join-Path $env:USERPROFILE .config starship.toml
+    # .configディレクトリが存在しない場合は作成
     if (Test-Path (Join-Path $env:USERPROFILE .config)) {
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     } else {
         New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     }
+    # 必要なコマンドラインツールをインストール
     check_command fzf junegunn.fzf 
     check_command lsd lsd-rs.lsd
     check_command starship Starship.Starship
     check_command rg BurntSushi.ripgrep
+    
+    # PowerShellモジュールをインストール
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
     $DOT_DIR = Join-Path ~ dotfiles
