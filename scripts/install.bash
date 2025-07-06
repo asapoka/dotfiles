@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-DOT_DIR="$HOME/dotfiles"
+# Set DOT_DIR to current directory if not set (for CI environments)
+# or default to $HOME/dotfiles (for regular installations)
+if [ -z "${DOT_DIR:-}" ]; then
+  if [ -f "$(pwd)/scripts/install.bash" ]; then
+    DOT_DIR="$(pwd)"
+  else
+    DOT_DIR="$HOME/dotfiles"
+  fi
+fi
 
 set -euo pipefail
 
@@ -23,7 +31,8 @@ has() {
 }
 
 # dotfilesディレクトリが無い場合git cloneする
-if [ ! -d ${DOT_DIR} ]; then
+# CI環境では既にcheckoutされているのでスキップ
+if [ ! -d ${DOT_DIR} ] && [ -z "${CI:-}" ]; then
   info "dotfiles doesn't exist so get it"
   if has "git"; then
     git clone https://github.com/asapoka/dotfiles.git ${DOT_DIR}

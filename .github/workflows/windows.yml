@@ -40,6 +40,9 @@ jobs:
       
       - name: Run installation script
         run: |
+          # Set environment variables for CI
+          $env:CI = "true"
+          $env:DOT_DIR = (Get-Location).Path
           powershell -ExecutionPolicy Bypass -File scripts/install.ps1
         shell: pwsh
       

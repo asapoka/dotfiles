@@ -37,6 +37,9 @@ jobs:
       
       - name: Run installation script
         run: |
+          # Set environment variables for CI
+          export DOT_DIR="$(pwd)"
+          export CI=true
           bash scripts/install.bash
       
       - name: Verify installation

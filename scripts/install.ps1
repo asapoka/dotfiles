@@ -43,7 +43,10 @@ function install_profile {
     param (
         $path
     )
-    if ($IsWindows) {
+    # CI環境での DOT_DIR の設定
+    if ($env:DOT_DIR) {
+        $DOT_DIR = $env:DOT_DIR
+    } elseif ($IsWindows) {
         $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
     } elseif ($IsMacOS -or $IsLinux) {
         $DOT_DIR = Join-Path ~ dotfiles
@@ -80,15 +83,20 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
 # メインのインストール処理
 # Windows環境の場合
 if ($IsWindows) {
-    # 管理者権限でない場合は管理者権限に昇格する
-    if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
+    # 管理者権限でない場合は管理者権限に昇格する（CI環境では無効）
+    if (-not $env:CI -and !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
         Start-Process pwsh.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit 
     }
 
-    $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
-    if (Test-Path $DOT_DIR) {
-        # dotfilesディレクトリが既に存在する場合は何もしない
+    # CI環境での DOT_DIR の設定
+    if ($env:DOT_DIR) {
+        $DOT_DIR = $env:DOT_DIR
     } else {
+        $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
+    }
+    
+    # CI環境ではリポジトリクローンをスキップ
+    if (-not $env:CI -and -not (Test-Path $DOT_DIR)) {
         # dotfilesが存在しない場合はリポジトリをクローンする
         # gitコマンドが利用可能な場合
         if (Get-Command git -ea SilentlyContinue) { 
@@ -126,12 +134,15 @@ if ($IsWindows) {
     check_installedModule PSfzf
 } elseif ($IsMacOS -or $IsLinux) {
     # macOS/Linux環境の場合
-    $DOT_DIR = Join-Path ~ dotfiles
-
-    # dotfilesディレクトリの存在確認
-    if (Test-Path $DOT_DIR) {
-        # 既に存在する場合は何もしない
+    # CI環境での DOT_DIR の設定
+    if ($env:DOT_DIR) {
+        $DOT_DIR = $env:DOT_DIR
     } else {
+        $DOT_DIR = Join-Path ~ dotfiles
+    }
+
+    # CI環境ではリポジトリクローンをスキップ
+    if (-not $env:CI -and -not (Test-Path $DOT_DIR)) {
         # dotfilesが存在しない場合はリポジトリをクローンする
         if (Get-Command git -ea SilentlyContinue) { 
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
