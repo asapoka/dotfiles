@@ -61,7 +61,16 @@ function check_command {
     Get-Command $command -ea SilentlyContinue | Out-Null
     if ($? -eq $false) {
         Write-Host Installing... $command
-        winget install --id $id --accept-package-agreements
+        # CI環境ではwingetインストールをスキップ
+        if (-not $env:CI) {
+            try {
+                winget install --id $id --accept-package-agreements
+            } catch {
+                Write-Host "Failed to install $command using winget: $($_.Exception.Message)"
+            }
+        } else {
+            Write-Host "CI environment detected, skipping winget installation of $command"
+        }
     } 
 }
 # PowerShellモジュールがインストールされていない場合はインストールする関数
@@ -69,10 +78,19 @@ function check_installedModule {
     param (
         $name
     )
-    Get-InstalledModule $name | Out-Null
+    Get-InstalledModule $name -ErrorAction SilentlyContinue | Out-Null
     if ($? -eq $false) {
         Write-Host Installing... $name
-        Install-Module $name
+        # CI環境ではモジュールインストールをスキップ
+        if (-not $env:CI) {
+            try {
+                Install-Module $name -Force -AllowClobber
+            } catch {
+                Write-Host "Failed to install module $name`: $($_.Exception.Message)"
+            }
+        } else {
+            Write-Host "CI environment detected, skipping module installation of $name"
+        }
     } 
 }
 # PowerShell Core でない場合は終了
