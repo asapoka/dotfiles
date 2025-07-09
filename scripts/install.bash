@@ -82,6 +82,12 @@ ln -snfv ${DOT_DIR}/config/alacritty/alacritty.toml ${HOME}/.config/alacritty/al
 # nvim
 ln -snfv ${DOT_DIR}/config/nvim ${HOME}/.config/nvim
 
+# claude
+if [ ! -d ${HOME}/.claude ]; then
+  mkdir -p ${HOME}/.claude
+fi
+ln -snfv ${DOT_DIR}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
+
 # brew eval
 if has "brew"; then
   case $(uname) in
