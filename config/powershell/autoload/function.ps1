@@ -63,3 +63,11 @@ function .... {
 function ESTURAN {
     Get-WinEvent -FilterHashtable @{LogName = "System"; Id = (7001, 7002); ProviderName = "Microsoft-Windows-Winlogon" } | Select-Object TimeCreated | Sort-Object TimeCreated | Group-Object { $_.TimeCreated.ToString("yyyy-MM-dd") } | Select-Object @{name = "Date"; expression = { $_.Name } }, @{name = "LogOn"; expression = { $_.Group[0].TimeCreated.ToString("HH:mm") } }, @{name = "LogOff"; expression = { $_.Group[$_.Group.Count - 1].TimeCreated.ToString("HH:mm") } }
 }
+# PowerShellプロファイル読み込み時間を測定
+function Measure-ProfileLoad {
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    . $PROFILE
+    $stopwatch.Stop()
+    Write-Host "Profile loaded in $($stopwatch.ElapsedMilliseconds)ms" -ForegroundColor Green
+}
+

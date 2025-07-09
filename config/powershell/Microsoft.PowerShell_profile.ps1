@@ -31,32 +31,53 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
     exit
 }
 # 読み込みたいps1スクリプトの保存場所
-# TODO 固定パスなのをどうにかしたい
-#Windows
 if ($IsWindows) {
     $psdir = Join-Path $env:USERPROFILE dotfiles config powershell autoload
 } else {
     # other os
     $psdir = Join-Path $HOME dotfiles config powershell autoload
 }
-# 保存場所にある全てのps1スクリプトを読み込む
-Get-ChildItem (Join-Path $psdir "*.ps1") | ForEach-Object { .$_ }
 
-# Ctrl + f で入力補完を確定、次の候補を選択
-Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptSuggestion
-Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptNextSuggestionWord
+# 共通スクリプトの読み込み（高速化のため直接指定）
+$commonScripts = @(
+    (Join-Path $psdir "alias.ps1"),
+    (Join-Path $psdir "function.ps1"),
+    (Join-Path $psdir "lazy.ps1")
+)
 
-# 重複した履歴を保存しないようにする
-Set-PSReadlineOption -HistoryNoDuplicates
+# OS固有スクリプトの条件付き読み込み
+if ($IsWindows) {
+    $commonScripts += (Join-Path $psdir "winget.ps1")
+}
 
-# fzf の設定
-# Ctrl + r でfzfの履歴検索
-Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
-# Ctrl + t でfzfのファイル検索
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
-# TabでPSFzf補完
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+# 存在するスクリプトのみを読み込み
+foreach ($script in $commonScripts) {
+    if (Test-Path $script) {
+        . $script
+    }
+}
 
+# PSReadLine設定の最適化
+if (Get-Module -ListAvailable -Name PSReadLine) {
+    # 重複した履歴を保存しないようにする
+    Set-PSReadlineOption -HistoryNoDuplicates
+    
+    # Ctrl + f で入力補完を確定、次の候補を選択
+    Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptSuggestion
+    Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function AcceptNextSuggestionWord
+}
 
-# starship を有効化
-Invoke-Expression (&starship init powershell)
+# PSfzf設定の最適化（モジュールが利用可能な場合のみ）
+if (Get-Module -ListAvailable -Name PSfzf) {
+    # Ctrl + r でfzfの履歴検索
+    Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+    # Ctrl + t でfzfのファイル検索
+    Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+    # TabでPSFzf補完
+    Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+}
+
+# starship を有効化（コマンドが利用可能な場合のみ）
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+    Invoke-Expression (&starship init powershell)
+}
