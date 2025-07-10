@@ -31,6 +31,17 @@ if ($IsWindows -or $PSVersionTable.Platform -eq "Win32NT" -or [Environment]::OSV
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CabinetState" -Name "FullPath" -Value 1
     
     Write-Host "Windows 設定の適用が完了しました。" -ForegroundColor Green
+    
+    # エクスプローラー再起動の選択
+    $restart = Read-Host "エクスプローラーを再起動して設定を反映しますか？ (y/n)"
+    if ($restart -eq "y" -or $restart -eq "Y") {
+        Write-Host "エクスプローラーを再起動中..." -ForegroundColor Blue
+        Stop-Process -ProcessName "explorer" -Force
+        Start-Process "explorer"
+        Write-Host "エクスプローラーの再起動が完了しました。" -ForegroundColor Green
+    } else {
+        Write-Host "設定を反映するには、後でエクスプローラーを手動で再起動するか、システムを再起動してください。" -ForegroundColor Yellow
+    }
 } else {
     Write-Host "Windows 以外の OS のため、設定をスキップしました。" -ForegroundColor Yellow
 }
