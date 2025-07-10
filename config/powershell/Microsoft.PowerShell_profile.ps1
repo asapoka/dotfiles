@@ -81,3 +81,16 @@ if (Get-Module -ListAvailable -Name PSfzf) {
 if (Get-Command starship -ErrorAction SilentlyContinue) {
     Invoke-Expression (&starship init powershell)
 }
+
+# Ctrl + w でカーソルから左側の単語を削除
+Set-PSReadLineKeyHandler -Key "Ctrl+w" -Function BackwardKillWord
+
+# Ctrl + k でカーソルから右側の行を削除
+Set-PSReadLineKeyHandler -Key "Ctrl+k" -Function ForwardDeleteLine
+
+# Ctrl + a で行の先頭に移動
+Set-PSReadLineKeyHandler -Key "Ctrl+a" -Function BeginningOfLine
+
+# Ctrl + e で行の末尾に移動
+Set-PSReadLineKeyHandler -Key "Ctrl+e" -Function EndOfLine
+
