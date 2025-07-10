@@ -1,28 +1,47 @@
+# ウィンドウ設定
 [window]
+# ウィンドウの内側の余白（パディング）
 padding = { x = 4, y = 2 }
 # 不透明度
 #opacity = 0.75
+# 背景のぼかし効果
 blur = true
+# 起動時のウィンドウモード
 startup_mode = "Maximized"
 
+# ウィンドウサイズ設定
 [window.dimensions]
+# 列数
 columns = 150
+# 行数
 lines = 40
 
+# スクロール設定
 [scrolling]
+# 履歴の保存行数
 history = 100000
+# スクロールの倍率
 multiplier = 5
 
+# フォント設定
 [font]
+# フォントサイズ
 size = 14.0
+# フォントのオフセット
 offset = { x = 0, y = 4 }
+# 通常フォント
 normal = { family = "HackGen Console NF", style="Regular" }
+# 太字フォント
 bold = { family = "HackGen Console NF", style="Bold" }
+# 斜体フォント
 italic = { family = "HackGen Console NF", style="Italic" }
+# 太字斜体フォント
 bold_italic = { family = "HackGen Console NF", style="Bold Italic" }
 
-
+# 一般設定
 [general]
+live_config_reload = true
+# カラーテーマのインポート
 import = [
     "~/.config/alacritty/themes/blood_moon.toml"
 ]
