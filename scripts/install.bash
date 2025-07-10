@@ -79,6 +79,12 @@ if [ ! -d ${HOME}/.config/alacritty ]; then
 fi
 ln -snfv ${DOT_DIR}/config/alacritty/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
 
+# alacritty themes
+if [ ! -d ${HOME}/.config/alacritty/themes ]; then
+  mkdir -p ${HOME}/.config/alacritty/themes
+fi
+ln -snfv ${DOT_DIR}/config/alacritty/themes/blood_moon.toml ${HOME}/.config/alacritty/themes/blood_moon.toml
+
 # nvim
 ln -snfv ${DOT_DIR}/config/nvim ${HOME}/.config/nvim
 

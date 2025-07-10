@@ -142,6 +142,26 @@ if ($IsWindows) {
         New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     }
+
+    # Alacrittyの設定ファイルをシンボリックリンク
+    $alacrittyDir = Join-Path $env:USERPROFILE .config alacritty
+    $alacrittyConfig = Join-Path $alacrittyDir alacritty.toml
+    $alacrittyThemesDir = Join-Path $alacrittyDir themes
+    $alacrittyTheme = Join-Path $alacrittyThemesDir blood_moon.toml
+    
+    # alacrittyディレクトリが存在しない場合は作成
+    if (-not (Test-Path $alacrittyDir)) {
+        New-Item -Path $alacrittyDir -ItemType Directory -Force
+    }
+    # alacritty/themesディレクトリが存在しない場合は作成
+    if (-not (Test-Path $alacrittyThemesDir)) {
+        New-Item -Path $alacrittyThemesDir -ItemType Directory -Force
+    }
+    
+    # alacritty設定ファイルのシンボリックリンクを作成
+    New-Item -Path $alacrittyConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty "alacritty.toml")).FullName -Force
+    # alacrittyテーマファイルのシンボリックリンクを作成
+    New-Item -Path $alacrittyTheme -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty themes "blood_moon.toml")).FullName -Force
     # 必要なコマンドラインツールをインストール
     check_command fzf junegunn.fzf 
     check_command lsd lsd-rs.lsd
