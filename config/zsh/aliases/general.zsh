@@ -10,3 +10,5 @@ alias pro="code ~/.zshrc"
 
 # 設定ファイルを再読み込みする
 alias re='. ~/.zshrc'
+
+alias less='bat'
