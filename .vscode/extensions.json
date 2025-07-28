@@ -1,3 +1,8 @@
 {
-  "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "yzhang.markdown-all-in-one", "davidanson.vscode-markdownlint"]
+  "recommendations": [
+    "esbenp.prettier-vscode", // Prettier
+    "dbaeumer.vscode-eslint", // JavaScript/TypeScript 用 ESLint
+    "davidanson.vscode-markdownlint", // Markdown lint ツール
+    "leodevbro.blockman" // コードブロック可視化
+  ]
 }
