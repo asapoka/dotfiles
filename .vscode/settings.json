@@ -1,4 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "editor.mouseWheelZoom": true
+  "editor.mouseWheelZoom": true,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideActivityBar": false
 }
