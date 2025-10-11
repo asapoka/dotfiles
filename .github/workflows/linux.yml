@@ -3,50 +3,51 @@ name: Test Linux Installation
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [master]
     paths:
-      - 'scripts/**'
-      - 'config/**'
-      - 'home/**'
-      - 'lib/**'
+      - "scripts/**"
+      - "config/**"
+      - "home/**"
+      - "lib/**"
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
-      - 'scripts/**'
-      - 'config/**'
-      - 'home/**'
-      - 'lib/**'
+      - "scripts/**"
+      - "config/**"
+      - "home/**"
+      - "lib/**"
 
 jobs:
   test-linux:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Install dependencies
         run: |
           # Install required tools for the installation script
           sudo apt-get update
           sudo apt-get install -y curl wget git zsh
-      
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
+
       - name: Test installation script syntax
         run: |
           bash -n scripts/install.bash
-      
+
       - name: Run installation script
         run: |
           # Set environment variables for CI
           export DOT_DIR="$(pwd)"
           export CI=true
           bash scripts/install.bash
-      
+
       - name: Verify installation
         run: |
           # Check if symlinks were created
           ls -la ~ | grep dotfiles || echo "No symlinks found in home directory"
-          
+
           # Check if zsh configuration is valid
           if [ -f ~/.zshrc ]; then
             echo "zsh configuration found"
@@ -56,7 +57,7 @@ jobs:
             echo "zsh configuration not found"
             exit 1
           fi
-          
+
           # Check if git configuration exists
           if [ -f ~/.gitconfig ]; then
             echo "git configuration found"
