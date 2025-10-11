@@ -25,3 +25,4 @@
 Set-Alias touch New-Item
 Set-Alias ls lsd
 Set-Alias type bat
+Set-Alias less bat
