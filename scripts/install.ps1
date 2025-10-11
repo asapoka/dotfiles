@@ -160,7 +160,7 @@ if ($IsWindows) {
     # 必要なコマンドラインツールをインストール
     check_command fd fd-find
     # check_command sk skim
-    winget install  junegunn.fzf 
+    winget install  junegunn.fzf # skimがWindows対応したら修正
     check_command lsd lsd
     check_command starship starship
     check_command rg ripgrep
