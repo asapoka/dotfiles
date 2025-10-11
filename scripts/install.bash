@@ -98,7 +98,7 @@ ln -snfv ${DOT_DIR}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
 install_command lsd
 install_command starship
 install_command lsd
-install_command fzf
+install_command skim # fzfの代替
 install_command bat
 install_command fd-find
 install_command ripgrep
