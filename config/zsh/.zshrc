@@ -31,6 +31,9 @@ source "$ZSH_CONFIG_DIR/core/prompt.zsh"
 # 一般的なエイリアス
 source "$ZSH_CONFIG_DIR/aliases/general.zsh"
 
+# 便利関数エイリアス
+source "$ZSH_CONFIG_DIR/aliases/function.zsh"
+
 # 安全性向上エイリアス
 source "$ZSH_CONFIG_DIR/aliases/safety.zsh"
 
