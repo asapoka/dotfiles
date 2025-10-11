@@ -61,15 +61,10 @@ function check_command {
     Get-Command $command -ea SilentlyContinue | Out-Null
     if ($? -eq $false) {
         Write-Host Installing... $command
-        # CI環境ではwingetインストールをスキップ
-        if (-not $env:CI) {
-            try {
-                winget install --id $id --accept-package-agreements
-            } catch {
-                Write-Host "Failed to install $command using winget: $($_.Exception.Message)"
-            }
-        } else {
-            Write-Host "CI environment detected, skipping winget installation of $command"
+        try {
+            cargo install $id
+        } catch {
+            Write-Host "Failed to install $command using cargo: $($_.Exception.Message)"
         }
     } 
 }
@@ -163,10 +158,12 @@ if ($IsWindows) {
     # alacrittyテーマファイルのシンボリックリンクを作成
     New-Item -Path $alacrittyTheme -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty themes "blood_moon.toml")).FullName -Force
     # 必要なコマンドラインツールをインストール
+    check_command fd fd-find
+    # check_command sk skim
     check_command fzf junegunn.fzf 
-    check_command lsd lsd-rs.lsd
-    check_command starship Starship.Starship
-    check_command rg BurntSushi.ripgrep
+    check_command lsd lsd
+    check_command starship starship
+    check_command rg ripgrep
     
     # PowerShellモジュールをインストール
     check_installedModule PSfzf
