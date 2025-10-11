@@ -16,11 +16,11 @@ source $DOT_DIR/lib/colors.bash
 
 # install command if command is not installed
 install_command() {
-  if has "brew"; then
+  if has "cargo"; then
     if ! command -v $1 >/dev/null 2>&1; then
-      title "brew install"
+      title "cargo install"
       info "Installing... $1"
-      brew install $1
+      cargo install $1
       info "Installed $1"
     fi
   fi
@@ -94,27 +94,13 @@ if [ ! -d ${HOME}/.claude ]; then
 fi
 ln -snfv ${DOT_DIR}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
 
-# brew eval
-if has "brew"; then
-  case $(uname) in
-  darwin*)
-    # Mac
-    # brew path
-    eval $(/opt/homebrew/bin/brew shellenv)
-    ;;
-  linux*)
-    # Linux
-    # brew path
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    ;;
-  esac
-fi
 
-install_command sheldon
+install_command lsd
 install_command starship
 install_command lsd
 install_command fzf
 install_command bat
-install_command fd
-install_command rg
+install_command fd-find
+install_command ripgrep
+install_command shelldon
 success "Deploy dotfiles complete!"
