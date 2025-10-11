@@ -2,5 +2,8 @@
   "editor.formatOnSave": true,
   "editor.mouseWheelZoom": true,
   "zenMode.hideLineNumbers": false,
-  "zenMode.hideActivityBar": false
+  "zenMode.hideActivityBar": false,
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell",
+  }
 }
