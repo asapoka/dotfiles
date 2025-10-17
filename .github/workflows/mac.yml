@@ -1,4 +1,4 @@
-name: Test macOS Installation
+: macOS環境のインストールテスト
 
 on:
   workflow_dispatch:
@@ -22,28 +22,28 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
+      - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: 依存関係のインストール
         run: |
           # Install required tools for the installation script
           which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           brew install git zsh
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
 
-      - name: Test installation script syntax
+      - name: インストールスクリプトの構文チェック
         run: |
           bash -n scripts/install.bash
 
-      - name: Run installation script
+      - name: インストールスクリプトを実行
         run: |
           # Set environment variables for CI
           export DOT_DIR="$(pwd)"
           export CI=true
           bash scripts/install.bash
 
-      - name: Verify installation
+      - name: インストールの検証
         run: |
           # Check if symlinks were created
           ls -la ~ | grep dotfiles || echo "No symlinks found in home directory"

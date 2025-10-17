@@ -1,4 +1,4 @@
-name: Test Linux Installation
+: Linux インストールのテスト
 
 on:
   workflow_dispatch:
