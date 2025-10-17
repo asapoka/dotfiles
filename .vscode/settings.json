@@ -1,10 +1,36 @@
 {
   // ファイル保存時に自動でコードをフォーマットする
   "editor.formatOnSave": true,
+  // マウスホイールでエディタのズームイン・ズームアウトを可能にする
   "editor.mouseWheelZoom": true,
+  // Zenモードで行番号を非表示にしない
   "zenMode.hideLineNumbers": false,
+  // Zenモードでアクティビティバーを非表示にしない
   "zenMode.hideActivityBar": false,
+  // PowerShellファイルのデフォルトフォーマッタを指定
   "[powershell]": {
     "editor.defaultFormatter": "ms-vscode.powershell",
+  },
+  // YAMLファイルに特化したエディタ設定
+  "[yaml]": {
+    // YAMLファイルのデフォルトフォーマッタを指定
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    // スペースを使用してインデントを挿入する
+    "editor.insertSpaces": true,
+    // インデント幅を2スペースに設定
+    "editor.tabSize": 2,
+    // 高度な自動インデントを有効化
+    "editor.autoIndent": "advanced",
+    // 差分エディタでトリムされた空白を無視しない
+    "diffEditor.ignoreTrimWhitespace": false,
+    // クイックサジェストの設定
+    "editor.quickSuggestions": {
+      // 文字列内でクイックサジェストを有効化
+      "strings": "on",
+      // コメント内でクイックサジェストを無効化
+      "comments": "off",
+      // その他の場所でクイックサジェストを有効化
+      "other": "on"
+    }
   }
 }
