@@ -1,4 +1,5 @@
 {
+  // ファイル保存時に自動でコードをフォーマットする
   "editor.formatOnSave": true,
   "editor.mouseWheelZoom": true,
   "zenMode.hideLineNumbers": false,
