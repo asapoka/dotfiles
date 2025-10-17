@@ -22,21 +22,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: リポジトリのチェックアウト
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: 依存するツールのインストール
         run: |
           # Install required tools for the installation script
           sudo apt-get update
           sudo apt-get install -y curl wget git zsh
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
 
-      - name: Test installation script syntax
+      - name: インストールスクリプトの構文チェック
         run: |
           bash -n scripts/install.bash
 
-      - name: Run installation script
+      - name: インストールスクリプトの実行
         run: |
           # Set environment variables for CI
           export DOT_DIR="$(pwd)"
