@@ -1,4 +1,4 @@
-: macOS環境のインストールテスト
+# macOS環境のインストールテスト
 
 on:
   workflow_dispatch:

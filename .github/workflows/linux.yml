@@ -1,4 +1,4 @@
-: Linux インストールのテスト
+# Linux インストールのテスト
 
 on:
   workflow_dispatch:
