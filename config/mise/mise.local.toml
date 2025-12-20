@@ -1,0 +1,8 @@
+[tasks.run]
+description = "upgrade all"
+run = "brew upgrade && mise upgrade"    
+
+[tools."github:alacritty/alacritty"]
+version = "latest"
+[tools."github:alacritty/alacritty".platforms]
+macos-arm64 = {asset_pattern = "Alacritty-v*.dmg"}
