@@ -29,8 +29,11 @@ jobs:
         run: |
           # Install required tools for the installation script
           which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install git zsh
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
+          brew install git zsh mise
+      
+      - name: miseのセットアップ
+        run: |
+          mise install
 
       - name: インストールスクリプトの構文チェック
         run: |
