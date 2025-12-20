@@ -101,6 +101,6 @@ fi
 ln -snfv ${DOT_DIR}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
 
 
-install_command shelldon
+install_command sheldon
 install_command mise
 success "Deploy dotfiles complete!"
