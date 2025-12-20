@@ -12,5 +12,3 @@ alias pro="code ~/.zshrc"
 alias re='. ~/.zshrc'
 
 alias less='bat'
-
-alias fzf='sk'
