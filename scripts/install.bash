@@ -16,11 +16,11 @@ source $DOT_DIR/lib/colors.bash
 
 # install command if command is not installed
 install_command() {
-  if has "cargo"; then
+  if has "brew"; then
     if ! command -v $1 >/dev/null 2>&1; then
-      title "cargo install"
+      title "brew install"
       info "Installing... $1"
-      cargo install $1
+      brew install $1
       info "Installed $1"
     fi
   fi
@@ -88,6 +88,12 @@ ln -snfv ${DOT_DIR}/config/alacritty/themes/blood_moon.toml ${HOME}/.config/alac
 # nvim
 ln -snfv ${DOT_DIR}/config/nvim ${HOME}/.config/nvim
 
+# mise local config
+if [ ! -d ${HOME}/.config/mise ]; then
+  mkdir -p ${HOME}/.config/mise
+fi
+ln -snfv ${DOT_DIR}/config/mise/mise.local.toml ${HOME}/.config/mise/mise.local.toml
+
 # claude
 if [ ! -d ${HOME}/.claude ]; then
   mkdir -p ${HOME}/.claude
@@ -103,4 +109,5 @@ install_command bat
 install_command fd-find
 install_command ripgrep
 install_command shelldon
+install_command mise
 success "Deploy dotfiles complete!"

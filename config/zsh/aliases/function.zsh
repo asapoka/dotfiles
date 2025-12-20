@@ -72,3 +72,7 @@ function uninstall() {
         fi
     fi
 }
+
+function menu(){
+  mise run 
+}

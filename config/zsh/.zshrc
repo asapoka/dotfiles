@@ -59,3 +59,5 @@ source "$ZSH_CONFIG_DIR/init/starship.zsh"
 
 # Sheldonプラグインマネージャー初期化
 source "$ZSH_CONFIG_DIR/init/sheldon.zsh"
+
+eval "$(mise activate zsh)"
