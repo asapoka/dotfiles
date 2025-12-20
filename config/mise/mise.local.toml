@@ -3,12 +3,7 @@ description = "upgrade all"
 run = "brew upgrade && mise upgrade"    
 
 [tools]
-jq = "latest"
-lazygit = "latest"
-yt-dlp = "latest"
-zellij = "latest"
 fd = "latest"
-dust = "latest"
 bat = "latest"
 bottom = "latest"
 gh = "latest"
