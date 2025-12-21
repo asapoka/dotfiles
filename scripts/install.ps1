@@ -46,9 +46,11 @@ function install_profile {
     # CI環境での DOT_DIR の設定
     if ($env:DOT_DIR) {
         $DOT_DIR = $env:DOT_DIR
-    } elseif ($IsWindows) {
+    }
+    elseif ($IsWindows) {
         $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
-    } elseif ($IsMacOS -or $IsLinux) {
+    }
+    elseif ($IsMacOS -or $IsLinux) {
         $DOT_DIR = Join-Path ~ dotfiles
     }
     New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config powershell "Microsoft.PowerShell_profile.ps1")).FullName -Force
@@ -63,7 +65,8 @@ function check_command {
         Write-Host Installing... $command
         try {
             cargo install $id
-        } catch {
+        }
+        catch {
             Write-Host "Failed to install $command using cargo: $($_.Exception.Message)"
         }
     } 
@@ -80,10 +83,12 @@ function check_installedModule {
         if (-not $env:CI) {
             try {
                 Install-Module $name -Force -AllowClobber
-            } catch {
+            }
+            catch {
                 Write-Host "Failed to install module $name`: $($_.Exception.Message)"
             }
-        } else {
+        }
+        else {
             Write-Host "CI environment detected, skipping module installation of $name"
         }
     } 
@@ -104,7 +109,8 @@ if ($IsWindows) {
     # CI環境での DOT_DIR の設定
     if ($env:DOT_DIR) {
         $DOT_DIR = $env:DOT_DIR
-    } else {
+    }
+    else {
         $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
     }
     
@@ -114,7 +120,8 @@ if ($IsWindows) {
         # gitコマンドが利用可能な場合
         if (Get-Command git -ea SilentlyContinue) { 
             git clone https://github.com/asapoka/dotfiles.git $DOT_DIR
-        } else {
+        }
+        else {
             Write-Output "gitコマンドが必要です！"
             exit 1
         }
@@ -133,7 +140,8 @@ if ($IsWindows) {
     # .configディレクトリが存在しない場合は作成
     if (Test-Path (Join-Path $env:USERPROFILE .config)) {
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
-    } else {
+    }
+    else {
         New-Item -Path (Join-Path $env:USERPROFILE .config) -ItemType Directory
         New-Item -Path $starship -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config "starship.toml")).FullName -Force
     }
@@ -171,12 +179,14 @@ if ($IsWindows) {
     
     # PowerShellモジュールをインストール
     check_installedModule PSfzf
-} elseif ($IsMacOS -or $IsLinux) {
+}
+elseif ($IsMacOS -or $IsLinux) {
     # macOS/Linux環境の場合
     # CI環境での DOT_DIR の設定
     if ($env:DOT_DIR) {
         $DOT_DIR = $env:DOT_DIR
-    } else {
+    }
+    else {
         $DOT_DIR = Join-Path ~ dotfiles
     }
 

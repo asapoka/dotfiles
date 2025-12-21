@@ -33,7 +33,8 @@ if ( $PSVersionTable.PSEdition -ne 'Core') {
 # 読み込みたいps1スクリプトの保存場所
 if ($IsWindows) {
     $psdir = Join-Path $env:USERPROFILE dotfiles config powershell autoload
-} else {
+}
+else {
     # other os
     $psdir = Join-Path $HOME dotfiles config powershell autoload
 }
