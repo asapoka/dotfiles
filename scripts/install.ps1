@@ -153,17 +153,21 @@ if ($IsWindows) {
         New-Item -Path $alacrittyThemesDir -ItemType Directory -Force
     }
     
+    # mise の設定ファイルのシンボリックリンクを作成
+    $miseConfigDir = Join-Path $env:USERPROFILE .config mise
+    $miseConfig = Join-Path $miseConfigDir mise.local.toml
+    # miseディレクトリが存在しない場合は作成
+    if (-not (Test-Path $miseConfigDir)) {
+        New-Item -Path $miseConfigDir -ItemType Directory -Force
+    }
+    New-Item -Path $miseConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config mise "mise.local.toml")).FullName -Force
+    
     # alacritty設定ファイルのシンボリックリンクを作成
     New-Item -Path $alacrittyConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty "alacritty.toml")).FullName -Force
     # alacrittyテーマファイルのシンボリックリンクを作成
     New-Item -Path $alacrittyTheme -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty themes "blood_moon.toml")).FullName -Force
     # 必要なコマンドラインツールをインストール
-    check_command fd fd-find
-    # check_command sk skim
-    winget install  junegunn.fzf # skimがWindows対応したら修正
-    check_command lsd lsd
     check_command starship starship
-    check_command rg ripgrep
     
     # PowerShellモジュールをインストール
     check_installedModule PSfzf

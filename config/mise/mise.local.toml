@@ -16,3 +16,4 @@ fzf = "latest"
 version = "latest"
 [tools."github:alacritty/alacritty".platforms]
 macos-arm64 = {asset_pattern = "Alacritty-v*.dmg"}
+windows-x64 = {asset_pattern = "Alacritty-v*-installer.msi" }

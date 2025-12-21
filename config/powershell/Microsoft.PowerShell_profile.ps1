@@ -82,6 +82,11 @@ if (Get-Command starship -ErrorAction SilentlyContinue) {
     Invoke-Expression (&starship init powershell)
 }
 
+# mise を有効化（コマンドが利用可能な場合のみ）
+if (Get-Command mise -ErrorAction SilentlyContinue) {
+    (&mise activate pwsh) | Out-String | Invoke-Expression
+}
+
 # Ctrl + w でカーソルから左側の単語を削除
 Set-PSReadLineKeyHandler -Key "Ctrl+w" -Function BackwardKillWord
 
