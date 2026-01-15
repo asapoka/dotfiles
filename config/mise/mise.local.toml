@@ -1,16 +1,22 @@
-[tasks.run]
+[tasks.upgrade]
 description = "upgrade all"
 run = "brew upgrade && mise upgrade"    
+
+[tasks.winget-upgrade]
+description="Winget でパッケージを更新"
+run = "winget upgrade --all --accept-source-agreements"
 
 [tools]
 fd = "latest"
 bat = "latest"
-bottom = "latest"
 gh = "latest"
 lsd = "latest"
 ripgrep = "latest"
 starship = "latest"
 fzf = "latest"
+neovim = "latest"
+ghq = "latest"
+jq = "latest"
 
 [tools."github:alacritty/alacritty"]
 version = "latest"

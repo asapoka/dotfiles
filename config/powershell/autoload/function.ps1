@@ -71,3 +71,7 @@ function Measure-ProfileLoad {
     Write-Host "Profile loaded in $($stopwatch.ElapsedMilliseconds)ms" -ForegroundColor Green
 }
 
+function menu {
+    mise run
+}
+
