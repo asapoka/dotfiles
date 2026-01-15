@@ -174,6 +174,22 @@ if ($IsWindows) {
     New-Item -Path $alacrittyConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty "alacritty.toml")).FullName -Force
     # alacrittyテーマファイルのシンボリックリンクを作成
     New-Item -Path $alacrittyTheme -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty themes "blood_moon.toml")).FullName -Force
+    
+    # VS Code prompts ファイルのシンボリックリンク作成
+    $vscodePromptsDir = Join-Path $env:APPDATA Code User prompts
+    # promptsディレクトリが存在しない場合は作成
+    if (-not (Test-Path $vscodePromptsDir)) {
+        New-Item -Path $vscodePromptsDir -ItemType Directory -Force
+    }
+    # promptディレクトリのすべての*.prompt.mdファイルをシンボリックリンク作成
+    $promptDir = Join-Path $DOT_DIR prompt
+    Get-ChildItem -Path $promptDir -Filter "*.prompt.md" | ForEach-Object {
+        $promptFile = $_.FullName
+        $promptFileName = $_.Name
+        $promptLinkPath = Join-Path $vscodePromptsDir $promptFileName
+        New-Item -Path $promptLinkPath -ItemType SymbolicLink -Value $promptFile -Force
+    }
+    
     # 必要なコマンドラインツールをインストール
     check_command starship starship
     
