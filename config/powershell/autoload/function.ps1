@@ -75,3 +75,13 @@ function menu {
     mise run
 }
 
+# ghqで管理されているリポジトリをfzfで選択して移動する
+# README.mdをbatコマンドでプレビュー表示
+function gcd {
+    $ghqRoot = ghq root
+    $repo = ghq list | fzf --preview "bat --color=always $($ghqRoot)/{}/README.md 2>/dev/null || echo 'README.md not found'"
+    
+    if ($repo) {
+        Set-Location (Join-Path $ghqRoot $repo)
+    }
+}
