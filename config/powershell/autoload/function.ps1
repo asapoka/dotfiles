@@ -79,7 +79,7 @@ function menu {
 # README.mdをbatコマンドでプレビュー表示
 function gcd {
     $ghqRoot = ghq root
-    $repo = ghq list | fzf --preview "bat --color=always $($ghqRoot)/{}/README.md 2>/dev/null || echo 'README.md not found'"
+    $repo = ghq list | fzf 
     
     if ($repo) {
         Set-Location (Join-Path $ghqRoot $repo)
