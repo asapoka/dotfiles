@@ -17,6 +17,7 @@ fzf = "latest"
 neovim = "latest"
 ghq = "latest"
 jq = "latest"
+lazygit = "latest"
 
 [tools."github:alacritty/alacritty"]
 version = "latest"
