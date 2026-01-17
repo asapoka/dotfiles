@@ -11,6 +11,9 @@
   "[powershell]": {
     "editor.defaultFormatter": "ms-vscode.powershell",
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   // YAMLファイルに特化したエディタ設定
   "[yaml]": {
     // YAMLファイルのデフォルトフォーマッタを指定
