@@ -30,6 +30,8 @@ jobs:
           bash -n scripts/install.bash
 
       - name: インストールスクリプトを実行
+        env:
+          MISE_GITHUB_TOKEN: ${{ secrets.MISE_GITHUB_TOKEN }}
         run: |
           # Set environment variables for CI
           export DOT_DIR="$(pwd)"

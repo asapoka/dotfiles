@@ -30,13 +30,14 @@ jobs:
           # Install required tools for the installation script
           sudo apt-get update
           sudo apt-get install -y curl wget git zsh
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -q
 
       - name: インストールスクリプトの構文チェック
         run: |
           bash -n scripts/install.bash
 
       - name: インストールスクリプトの実行
+        env:
+          MISE_GITHUB_TOKEN: ${{ secrets.MISE_GITHUB_TOKEN }}
         run: |
           # Set environment variables for CI
           export DOT_DIR="$(pwd)"
