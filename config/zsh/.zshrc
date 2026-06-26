@@ -9,7 +9,18 @@
 # ログインシェルをzshに変更する: chsh -s /bin/zsh
 
 # dotfiles配下のzsh設定ディレクトリ
-ZSH_CONFIG_DIR="$HOME/dotfiles/config/zsh"
+# ~/.zshrc は config/zsh/.zshrc への symlink で運用する前提
+if [[ -L "$HOME/.zshrc" ]]; then
+  zshrc_target="$(readlink "$HOME/.zshrc")"
+  if [[ -n "$zshrc_target" && "$zshrc_target" != /* ]]; then
+    zshrc_target="$HOME/$zshrc_target"
+  fi
+  zshrc_target="${zshrc_target:A}"
+  if [[ "$zshrc_target" == */config/zsh/.zshrc ]]; then
+    DOTFILES_DIR="${zshrc_target%/config/zsh/.zshrc}"
+  fi
+fi
+ZSH_CONFIG_DIR="$DOTFILES_DIR/config/zsh"
 
 # =============================================================================
 # 基本設定の読み込み
@@ -60,4 +71,4 @@ source "$ZSH_CONFIG_DIR/init/starship.zsh"
 # Sheldonプラグインマネージャー初期化
 source "$ZSH_CONFIG_DIR/init/sheldon.zsh"
 
-eval "$(mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
