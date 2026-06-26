@@ -25,16 +25,6 @@ jobs:
       - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
 
-      - name: 依存関係のインストール
-        run: |
-          # Install required tools for the installation script
-          which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install git zsh mise
-      
-      - name: miseのセットアップ
-        run: |
-          mise install
-
       - name: インストールスクリプトの構文チェック
         run: |
           bash -n scripts/install.bash
