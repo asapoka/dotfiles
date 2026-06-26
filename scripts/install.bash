@@ -14,18 +14,6 @@ set -euo pipefail
 
 source $DOT_DIR/lib/colors.bash
 
-# install command if command is not installed
-install_command() {
-  if has "brew"; then
-    if ! command -v $1 >/dev/null 2>&1; then
-      title "brew install"
-      info "Installing... $1"
-      brew install $1
-      info "Installed $1"
-    fi
-  fi
-}
-
 has() {
   type "$1" >/dev/null 2>&1
 }
@@ -101,6 +89,21 @@ fi
 ln -snfv ${DOT_DIR}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
 
 
-install_command sheldon
-install_command mise
+# install mise if needed, then let mise install configured tools
+if ! has mise; then
+  if has curl; then
+    title "Install mise"
+    curl https://mise.run | sh
+  else
+    echo "[error] curl is required to install mise" >&2
+    exit 1
+  fi
+fi
+
+if ! has mise; then
+  echo "[error] mise installation failed" >&2
+  exit 1
+fi
+
+mise install
 success "Deploy dotfiles complete!"
