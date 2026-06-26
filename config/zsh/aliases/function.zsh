@@ -76,3 +76,27 @@ function uninstall() {
 function menu(){
   mise run 
 }
+
+# ghqで管理されているリポジトリをfzfで選択して移動する
+# README.mdをbatコマンドでプレビュー表示
+function gcd() {
+  local ghq_root repo
+
+  if ! command -v ghq >/dev/null 2>&1; then
+    echo 'ghq is not installed' >&2
+    return 1
+  fi
+
+  ghq_root="$(ghq root)"
+  repo="$(ghq list | fzf --preview "bat --color=always --style=header ${ghq_root}/{}/README.*")"
+
+  if [[ -n "$repo" ]]; then
+    cd "$ghq_root/$repo"
+    zle reset-prompt
+  fi
+}
+
+# Ctrl+G で ghq 管理のリポジトリを選択して移動する
+# fzf のプレビューで README を表示する
+zle -N gcd
+bindkey '^g' gcd
