@@ -24,7 +24,6 @@ require('lazy').setup({
 
   require 'plugins/mini',
 
-  require 'plugins/treesitter',
 
   require 'plugins/vimdoc-ja', -- japanese vim doc
 
