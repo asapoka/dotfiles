@@ -1,6 +1,6 @@
 [tasks.upgrade]
 description = "upgrade all"
-run = "brew upgrade && mise upgrade"    
+run = "mise self-update -y && mise up && mise prune -y && mise doctor"    
 
 [tasks.winget-upgrade]
 description="Winget でパッケージを更新"
