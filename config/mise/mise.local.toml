@@ -1,6 +1,6 @@
 [tasks.upgrade]
 description = "upgrade all"
-run = "brew upgrade && mise upgrade"    
+run = "mise self-update -y && mise up && mise prune -y && mise doctor"    
 
 [tasks.winget-upgrade]
 description="Winget でパッケージを更新"
@@ -19,9 +19,3 @@ neovim = "latest"
 ghq = "latest"
 jq = "latest"
 lazygit = "latest"
-
-[tools."github:alacritty/alacritty"]
-version = "latest"
-[tools."github:alacritty/alacritty".platforms]
-macos-arm64 = {asset_pattern = "Alacritty-v*.dmg"}
-windows-x64 = {asset_pattern = "Alacritty-v*-installer.msi" }

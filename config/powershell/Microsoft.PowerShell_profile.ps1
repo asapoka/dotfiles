@@ -100,3 +100,8 @@ Set-PSReadLineKeyHandler -Key "Ctrl+a" -Function BeginningOfLine
 # Ctrl + e で行の末尾に移動
 Set-PSReadLineKeyHandler -Key "Ctrl+e" -Function EndOfLine
 
+# Ctrl + g でghqを使ってリポジトリ移動
+Set-PSReadLineKeyHandler -Chord "Ctrl+g" -ScriptBlock { 
+    gcd
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine() 
+}
