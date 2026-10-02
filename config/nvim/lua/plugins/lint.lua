@@ -9,13 +9,13 @@ return {
         markdown = { 'markdownlint' },
       }
 
-      -- To allow other plugins to add linters to require('lint').linters_by_ft,
-      -- instead set linters_by_ft like this:
+      -- 他のプラグインが require('lint').linters_by_ft にリントツールを追加できるようにするには、
+      -- 次のように設定します:
       -- lint.linters_by_ft = lint.linters_by_ft or {}
       -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
       --
-      -- However, note that this will enable a set of default linters,
-      -- which will cause errors unless these tools are available:
+      -- ただしこれを有効にするとデフォルトのリンタ群が有効になり、
+      -- それらのツールが存在しないとエラーになります。例:
       -- {
       --   clojure = { "clj-kondo" },
       --   dockerfile = { "hadolint" },
@@ -29,7 +29,7 @@ return {
       --   text = { "vale" }
       -- }
       --
-      -- You can disable the default linters by setting their filetypes to nil:
+      -- デフォルトのリンタを無効にするには、該当 filetype を nil に設定します:
       -- lint.linters_by_ft['clojure'] = nil
       -- lint.linters_by_ft['dockerfile'] = nil
       -- lint.linters_by_ft['inko'] = nil

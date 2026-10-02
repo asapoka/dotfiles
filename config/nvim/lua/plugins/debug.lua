@@ -1,27 +1,26 @@
 -- debug.lua
 --
--- Shows how to use the DAP plugin to debug your code.
+-- DAP プラグインを使ったデバッグ設定の例です。
 --
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
+-- 主に Go 向けのデバッガ設定に焦点を当てていますが、他の言語へも拡張できます。
+-- これは Kickstart 設定のサンプルなので、必要に応じて自由に変更してください。
 
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
   -- NOTE: And you can specify dependencies as well
   dependencies = {
-    -- Creates a beautiful debugger UI
+    -- きれいなデバッガ用の UI を作成するプラグイン
     'rcarriga/nvim-dap-ui',
 
-    -- Required dependency for nvim-dap-ui
+    -- nvim-dap-ui の必須依存ライブラリ
     'nvim-neotest/nvim-nio',
 
-    -- Installs the debug adapters for you
+    -- デバッグアダプタをインストールするためのツール
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
-    -- Add your own debuggers here
+    -- 必要に応じて追加のデバッガをここに記述してください
     'leoluz/nvim-dap-go',
   },
   keys = {
@@ -68,13 +67,13 @@ return {
       end,
       desc = 'Debug: Set Breakpoint',
     },
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    -- 最後のセッション結果を表示するトグル。この設定がないと、未処理の例外が発生した場合にセッションの出力が見えないことがあります。
     {
       '<F7>',
       function()
         require('dapui').toggle()
       end,
-      desc = 'Debug: See last session result.',
+      desc = 'Debug: 最後のセッション結果を表示',
     },
   },
   config = function()
@@ -82,28 +81,26 @@ return {
     local dapui = require 'dapui'
 
     require('mason-nvim-dap').setup {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
+      -- さまざまなデバッガを合理的なデフォルト設定でセットアップするための最善の試みを行います
       automatic_installation = true,
 
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
+      -- ハンドラに追加設定を渡すことができます。
+      -- 詳細は mason-nvim-dap の README を参照してください
       handlers = {},
 
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
+      -- 必要なツールがインストールされていることを確認してください
+      -- （インストール方法は README 等を参照してください）
       ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
+        -- 使用したい言語のデバッガをここに追加してください
         'delve',
       },
     }
 
-    -- Dap UI setup
-    -- For more information, see |:help nvim-dap-ui|
+    -- DAP UI の設定
+    -- 詳細は |:help nvim-dap-ui| を参照してください
     dapui.setup {
-      -- Set icons to characters that are more likely to work in every terminal.
-      --    Feel free to remove or use ones that you like more! :)
-      --    Don't feel like these are good choices.
+      -- ターミナル間で動作しやすい文字にアイコンを設定します。
+      --    必要に応じて削除したり好みのアイコンに変更してください。
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
@@ -120,7 +117,7 @@ return {
       },
     }
 
-    -- Change breakpoint icons
+    -- ブレークポイントのアイコンを変更する例
     -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
     -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
     -- local breakpoint_icons = vim.g.have_nerd_font

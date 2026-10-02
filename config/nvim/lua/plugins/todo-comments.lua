@@ -1,4 +1,4 @@
--- Highlight todo, notes, etc in comments
+-- コメント内の TODO やメモなどにハイライトを付けます
 return {
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }

@@ -1,4 +1,4 @@
--- lazy.nvim
+-- noice.nvim の設定（通知やメッセージ表示の改善）
 return {
     "folke/noice.nvim",
     event = "VeryLazy",

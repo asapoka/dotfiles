@@ -1,32 +1,31 @@
 return {
-  { -- Collection of various small independent plugins/modules
+  { -- 小さな独立モジュール群（mini.nvim のコレクション）
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
+      -- テキストオブジェクトの操作を改善する設定
       --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
+      -- 例:
+      --  - va)  - カッコの周りをビジュアルで選択
+      --  - yinq - 次の引用符内をヤンク
+      --  - ci'  - 引用符内を変更
       require('mini.ai').setup { n_lines = 500 }
 
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      -- 周囲の括弧や引用符などの追加／削除／置換を可能にします
       --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
+      -- 例:
+      -- - saiw) - 周囲を追加
+      -- - sd'   - 周囲の引用符を削除
+      -- - sr)'  - 周囲の置換
       require('mini.surround').setup()
 
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
+      -- シンプルで軽量なステータスラインの設定です。
+      --  好みでこの setup を削除して別のステータスラインプラグインを試しても構いません。
       local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
+      -- Nerd Font があればアイコン表示を有効化してください
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
+      -- ステータスラインの各セクションはデフォルト挙動を上書きして設定できます。
+      -- 例としてカーソル位置の表示を LINE:COLUMN にしています。
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'

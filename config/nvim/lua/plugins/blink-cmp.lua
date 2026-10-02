@@ -1,5 +1,5 @@
 return {
-  { -- Autocompletion
+  { -- 補完（Autocompletion）
     'saghen/blink.cmp',
     event = 'VimEnter',
     version = '1.*',
@@ -36,27 +36,26 @@ return {
     --- @type blink.cmp.Config
     opts = {
       keymap = {
-        -- 'default' (recommended) for mappings similar to built-in completions
-        --   <c-y> to accept ([y]es) the completion.
-        --    This will auto-import if your LSP supports it.
-        --    This will expand snippets if the LSP sent a snippet.
-        -- 'super-tab' for tab to accept
-        -- 'enter' for enter to accept
-        -- 'none' for no mappings
+        -- 'default'（推奨）: ビルトイン補完と似たマッピングを使用します
+        --   <c-y> で補完を受け入れます（[y]es）。
+        --    LSP が対応していれば自動インポートが行われます。
+        --    スニペットが送られている場合は展開されます。
+        -- 'super-tab' は Tab で受け入れ
+        -- 'enter' は Enter で受け入れ
+        -- 'none' はマッピングを使用しません
         --
-        -- For an understanding of why the 'default' preset is recommended,
-        -- you will need to read `:help ins-completion`
+        -- なぜ 'default' が推奨かは `:help ins-completion` を参照してください。
         --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
+        -- 本当に便利なので `:help ins-completion` を一読することをおすすめします。
         --
-        -- All presets have the following mappings:
-        -- <tab>/<s-tab>: move to right/left of your snippet expansion
-        -- <c-space>: Open menu or open docs if already open
-        -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-        -- <c-e>: Hide menu
-        -- <c-k>: Toggle signature help
+        -- すべてのプリセットが以下のマッピングを持ちます:
+        -- <tab>/<s-tab>: スニペット展開内で右/左に移動
+        -- <c-space>: メニューを開く、または既に開いていればドキュメントを開く
+        -- <c-n>/<c-p> または <up>/<down>: 次/前の候補を選択
+        -- <c-e>: メニューを閉じる
+        -- <c-k>: シグネチャヘルプの切り替え
         --
-        -- See :h blink-cmp-config-keymap for defining your own keymap
+        -- 独自のキーマップ定義は :h blink-cmp-config-keymap を参照してください
         preset = 'default',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:

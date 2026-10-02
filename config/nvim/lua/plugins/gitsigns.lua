@@ -1,18 +1,17 @@
--- Alternatively, use `config = function() ... end` for full control over the configuration.
--- If you prefer to call `setup` explicitly, use:
+-- あるいは `config = function() ... end` を使って設定を完全に制御することもできます。
+-- 明示的に `setup` を呼び出す場合は次のようにしてください:
 --    {
 --        'lewis6991/gitsigns.nvim',
 --        config = function()
 --            require('gitsigns').setup({
---                -- Your gitsigns configuration here
+--                -- ここに gitsigns の設定を記述します
 --            })
 --        end,
 --    }
 --
--- Here is a more advanced example where we pass configuration
--- options to `gitsigns.nvim`.
+-- 以下は `gitsigns.nvim` に設定オプションを渡す高度な例です。
 --
--- See `:help gitsigns` to understand what the configuration keys do
+-- 設定キーの詳細は `:help gitsigns` を参照してください
 return {
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -33,7 +32,7 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        -- Navigation
+        -- ナビゲーション
         map('n', ']c', function()
           if vim.wo.diff then
             vim.cmd.normal { ']c', bang = true }
@@ -50,7 +49,7 @@ return {
           end
         end, { desc = 'Jump to previous git [c]hange' })
 
-        -- Actions
+        -- 操作
         -- visual mode
         map('v', '<leader>hs', function()
           gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
@@ -70,7 +69,7 @@ return {
         map('n', '<leader>hD', function()
           gitsigns.diffthis '@'
         end, { desc = 'git [D]iff against last commit' })
-        -- Toggles
+        -- トグル
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
         map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
       end,

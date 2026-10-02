@@ -1,9 +1,8 @@
 return {
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
+  { -- 別のカラースキームに簡単に切り替えることができます。
+    -- 下のプラグイン名を変更し、設定内のコマンドをそのカラースキーム名に合わせてください。
     --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    -- インストール済みのカラースキームを確認するには `:Telescope colorscheme` を使用できます。
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
@@ -14,9 +13,8 @@ return {
         },
       }
 
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- ここでカラースキームを読み込みます。
+      -- このテーマには複数のスタイルがあり、'tokyonight-storm'、'tokyonight-moon'、'tokyonight-day' などを指定できます。
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },

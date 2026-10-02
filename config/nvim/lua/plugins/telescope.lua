@@ -1,9 +1,8 @@
--- NOTE: Plugins can specify dependencies.
+-- 注意: プラグインは依存関係を指定できます。
 --
--- The dependencies are proper plugin specifications as well - anything
--- you do for a plugin at the top level, you can do for a dependency.
+-- 依存関係も正式なプラグイン仕様です。トップレベルで行える設定は依存としても同様に指定できます。
 --
--- Use the `dependencies` key to specify the dependencies of a particular plugin
+-- 特定のプラグインの依存関係は `dependencies` キーで指定します。
 
 return {
   { -- Fuzzy Finder (files, lsp, etc)
@@ -30,30 +29,27 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- Telescope is a fuzzy finder that comes with a lot of different things that
-      -- it can fuzzy find! It's more than just a "file finder", it can search
-      -- many different aspects of Neovim, your workspace, LSP, and more!
+      -- Telescope は多機能なファジーファインダです。単なる「ファイル検索」以上の機能を持ち、
+      -- Neovim、ワークスペース、LSP などさまざまな対象を検索できます。
       --
-      -- The easiest way to use Telescope, is to start by doing something like:
+      -- 使い方の簡単な例:
       --  :Telescope help_tags
       --
-      -- After running this command, a window will open up and you're able to
-      -- type in the prompt window. You'll see a list of `help_tags` options and
-      -- a corresponding preview of the help.
+      -- このコマンドを実行するとウィンドウが開き、プロンプトに入力できます。`help_tags` の一覧と
+      -- プレビューが表示されます。
       --
-      -- Two important keymaps to use while in Telescope are:
-      --  - Insert mode: <c-/>
-      --  - Normal mode: ?
+      -- Telescope 内で便利なキー操作例:
+      --  - インサートモード: <c-/>
+      --  - ノーマルモード: ?
       --
-      -- This opens a window that shows you all of the keymaps for the current
-      -- Telescope picker. This is really useful to discover what Telescope can
-      -- do as well as how to actually do it!
+      -- これにより現在の Telescope ピッカーで使用可能な全てのキーマップ表示が開きます。Telescope の
+      -- 機能を見つけたり使い方を学ぶのに非常に役立ちます。
 
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope` and `:help telescope.setup()`
+      -- [[ Telescope の設定 ]]
+      -- 詳細は `:help telescope` および `:help telescope.setup()` を参照してください
       require('telescope').setup {
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
+        -- デフォルトのマッピングや更新などをここに記述できます
+        --  詳細は `:help telescope.setup()` を確認してください
         --
         -- defaults = {
         --   mappings = {

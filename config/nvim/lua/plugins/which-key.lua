@@ -1,16 +1,12 @@
--- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+-- 注意: プラグインは読み込まれたときに Lua コードを実行するよう設定できます。
 --
--- This is often very useful to both group configuration, as well as handle
--- lazy loading plugins that don't need to be loaded immediately at startup.
+-- これは設定をまとめるのに便利で、起動時に直ちに読み込む必要のないプラグインを遅延読み込みするのにも役立ちます。
 --
--- For example, in the following configuration, we use:
---  event = 'VimEnter'
+-- 例えば以下の設定では `event = 'VimEnter'` を使用しています。
 --
--- which loads which-key before all the UI elements are loaded. Events can be
--- normal autocommands events (`:help autocmd-events`).
+-- これにより UI の要素が読み込まれる前に which-key をロードします。イベントは通常のオートコマンドイベント（`:help autocmd-events`）を指定できます。
 --
--- Then, because we use the `opts` key (recommended), the configuration runs
--- after the plugin has been loaded as `require(MODULE).setup(opts)`.
+-- また、`opts` キー（推奨）を使うと、プラグイン読み込み後に `require(MODULE).setup(opts)` が実行されます。
 
 return {
   { -- Useful plugin to show you pending keybinds.
