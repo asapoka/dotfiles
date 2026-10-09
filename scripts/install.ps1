@@ -43,15 +43,13 @@ function install_profile {
     param (
         $path
     )
-    # CI環境での DOT_DIR の設定
-    if ($env:DOT_DIR) {
-        $DOT_DIR = $env:DOT_DIR
-    }
-    elseif ($IsWindows) {
-        $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
+    if ($IsWindows) {
+        $DOT_DIR = Join-Path -Path $env:USERPROFILE ghq "github.com" asapoka dotfiles
+        echo $DOT_DIR
+
     }
     elseif ($IsMacOS -or $IsLinux) {
-        $DOT_DIR = Join-Path ~ dotfiles
+        $DOT_DIR = Join-Path -Path ~ ghq "github.com" asapoka dotfiles
     }
     New-Item -Path $path -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config powershell "Microsoft.PowerShell_profile.ps1")).FullName -Force
 }
@@ -106,12 +104,11 @@ if ($IsWindows) {
         Start-Process pwsh.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit 
     }
 
-    # CI環境での DOT_DIR の設定
-    if ($env:DOT_DIR) {
-        $DOT_DIR = $env:DOT_DIR
+    if ($IsWindows) {
+        $DOT_DIR = Join-Path -Path $env:USERPROFILE ghq "github.com" asapoka dotfiles
     }
-    else {
-        $DOT_DIR = Join-Path $env:USERPROFILE dotfiles
+    elseif ($IsMacOS -or $IsLinux) {
+        $DOT_DIR = Join-Path -Path ~ ghq "github.com" asapoka dotfiles
     }
     
     # CI環境ではリポジトリクローンをスキップ
@@ -163,12 +160,12 @@ if ($IsWindows) {
     
     # mise の設定ファイルのシンボリックリンクを作成
     $miseConfigDir = Join-Path $env:USERPROFILE .config mise
-    $miseConfig = Join-Path $miseConfigDir mise.local.toml
+    $miseConfig = Join-Path $miseConfigDir config.toml
     # miseディレクトリが存在しない場合は作成
     if (-not (Test-Path $miseConfigDir)) {
         New-Item -Path $miseConfigDir -ItemType Directory -Force
     }
-    New-Item -Path $miseConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config mise "mise.local.toml")).FullName -Force
+    New-Item -Path $miseConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config mise "config.toml")).FullName -Force
     
     # alacritty設定ファイルのシンボリックリンクを作成
     New-Item -Path $alacrittyConfig -ItemType SymbolicLink -Value (Get-Item (Join-Path $DOT_DIR config alacritty "alacritty.toml")).FullName -Force

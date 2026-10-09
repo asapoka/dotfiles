@@ -80,7 +80,7 @@ ln -snfv ${DOT_DIR}/config/nvim ${HOME}/.config/nvim
 if [ ! -d ${HOME}/.config/mise ]; then
   mkdir -p ${HOME}/.config/mise
 fi
-ln -snfv ${DOT_DIR}/config/mise/mise.local.toml ${HOME}/.config/mise/mise.local.toml
+ln -snfv ${DOT_DIR}/config/mise/config.toml ${HOME}/.config/mise/config.toml
 
 # claude
 if [ ! -d ${HOME}/.claude ]; then

@@ -19,3 +19,10 @@ neovim = "latest"
 ghq = "latest"
 jq = "latest"
 lazygit = "latest"
+
+[bootstrap.packages]
+"winget:AgileBits.1Password" = "latest"
+"winget:7zip.7zip" = "latest"
+"winget:AdGuard.AdGuard" = "latest"
+"winget:Tailscale.Tailscale" = "latest"
+"winget:VideoLAN.VLC" = "latest"
