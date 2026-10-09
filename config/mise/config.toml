@@ -42,7 +42,22 @@ lazygit = "latest"
 "~/.gitconfig" = "~/ghq/github.com/asapoka/dotfiles/home/.gitconfig"
 "~/.ripgreprc" = "~/ghq/github.com/asapoka/dotfiles/home/.ripgreprc"
 "~/.config/starship.toml" = "~/ghq/github.com/asapoka/dotfiles/config/starship.toml"
-"~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1" = "~/ghq/github.com/asapoka/dotfiles/config/powershell/Microsoft.PowerShell_profile.ps1"
-"~/Documents/PowerShell/Microsoft.VSCode_profile.ps1" = "~/ghq/github.com/asapoka/dotfiles/config/powershell/Microsoft.PowerShell_profile.ps1"
 
-"~/.config/sheldon/plugins.toml" = "~/ghq/github.com/asapoka/dotfiles/config/sheldon/plugins.toml"
+[dotfiles."PowerShell_profile.ps1"]
+source = "~/ghq/github.com/asapoka/dotfiles/config/powershell/Microsoft.PowerShell_profile.ps1"
+variants = [
+  { os = "windows", target = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1" },
+]
+
+[dotfiles."VSCode_profile.ps1"]
+source = "~/ghq/github.com/asapoka/dotfiles/config/powershell/Microsoft.PowerShell_profile.ps1"
+variants = [
+  { os = "windows", target = "~/Documents/PowerShell/Microsoft.VSCode_profile.ps1" },
+]
+
+[dotfiles."sheldon/plugins.toml"]
+source = "~/ghq/github.com/asapoka/dotfiles/config/sheldon/plugins.toml"
+variants = [
+  { os = "macos", target = "~/.config/sheldon/plugins.toml" },
+  { os = "linux", target = "~/.config/sheldon/plugins.toml" },
+]
