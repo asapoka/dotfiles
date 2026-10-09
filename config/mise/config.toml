@@ -38,4 +38,4 @@ lazygit = "latest"
 "winget:VideoLAN.VLC" = "latest"
 
 [dotfiles]
-"~/.config/mise" = "~/dotfiles/mise"
+"~/.config/mise" = "~/ghq/github.com/asapoka/dotfiles/mise"
