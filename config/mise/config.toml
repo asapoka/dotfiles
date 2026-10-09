@@ -37,6 +37,17 @@ lazygit = "latest"
 "winget:Tailscale.Tailscale" = "latest"
 "winget:VideoLAN.VLC" = "latest"
 
+"brew-cask:ghostty"   = "latest"
+"brew-cask:1password"   = "latest"
+"brew-cask:adguard"   = "latest"
+"brew-cask:font-hackgen-nerd"   = "latest"
+"brew-cask:google-drive"   = "latest"
+"brew-cask:vlc"   = "latest"
+"brew-cask:visual-studio-code"   = "latest"
+"brew-cask:scansnap-home"   = "latest"
+"brew-cask:google-japanese-ime"   = "latest"
+
+
 [dotfiles]
 "~/.config/mise" = "~/ghq/github.com/asapoka/dotfiles/config/mise"
 "~/.gitconfig" = "~/ghq/github.com/asapoka/dotfiles/home/.gitconfig"
