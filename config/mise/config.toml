@@ -72,3 +72,9 @@ variants = [
   { os = "macos", target = "~/.config/sheldon/plugins.toml" },
   { os = "linux", target = "~/.config/sheldon/plugins.toml" },
 ]
+
+[dotfiles."config/ghostty"]
+source = "~/ghq/github.com/asapoka/dotfiles/config/ghostty/config.ghostty"
+variants = [
+  { os = "macos", target = "~/.config/ghostty/config.ghostty" },
+]
