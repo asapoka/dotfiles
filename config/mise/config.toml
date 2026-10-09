@@ -1,3 +1,13 @@
+[settings]
+minimum_release_age = "3d"
+dotfiles.root = "~/ghq/github.com/asapoka/dotfiles"
+dotfiles.default_mode = "symlink"
+[env]
+LANG = "ja_JP.UTF-8"
+
+[bootstrap.repos]
+"~/ghq/github.com/asapoka/dotfiles" = { url = "git@github.com:asapoka/dotfiles.git", ref = "main" }
+
 [tasks.upgrade]
 description = "upgrade all"
 run = "mise self-update -y && mise up && mise prune -y && mise doctor"    
@@ -26,3 +36,6 @@ lazygit = "latest"
 "winget:AdGuard.AdGuard" = "latest"
 "winget:Tailscale.Tailscale" = "latest"
 "winget:VideoLAN.VLC" = "latest"
+
+[dotfiles]
+"~/.config/mise" = "~/dotfiles/mise"
