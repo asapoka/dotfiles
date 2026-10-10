@@ -87,13 +87,16 @@ function gcd() {
     return 1
   fi
 
-  ghq_root="$(ghq root)"
-  repo="$(ghq list | fzf --preview "bat --color=always --style=header ${ghq_root}/{}/README.*")"
-
-  if [[ -n "$repo" ]]; then
-    cd "$ghq_root/$repo"
+  # 選択したリポジトリへ移動 かつ
+  # 右にリポジトリのディレクトリ詳細を表示
+  local src=$(ghq list | fzf --preview "bat --color=always --style=header $(ghq root)/{}/README.*")
+  if [ -n "$src" ]; then
+    cd "$(ghq root)/$src"
+    zle accept-line
     zle reset-prompt
+
   fi
+  zle -R -c
 }
 
 # Ctrl+G で ghq 管理のリポジトリを選択して移動する
