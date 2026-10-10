@@ -61,6 +61,9 @@ source "$ZSH_CONFIG_DIR/aliases/tools.zsh"
 # PATH設定・Homebrew初期化
 source "$ZSH_CONFIG_DIR/env/paths.zsh"
 
+# mise管理ツールをPATHに追加
+eval "$(~/.local/bin/mise activate zsh)"
+
 # =============================================================================
 # 外部ツール初期化
 # =============================================================================
@@ -70,5 +73,3 @@ source "$ZSH_CONFIG_DIR/init/starship.zsh"
 
 # Sheldonプラグインマネージャー初期化
 source "$ZSH_CONFIG_DIR/init/sheldon.zsh"
-
-eval "$(~/.local/bin/mise activate zsh)"
