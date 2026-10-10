@@ -2,12 +2,16 @@
 minimum_release_age = "3d"
 dotfiles.root = "~/ghq/github.com/asapoka/dotfiles"
 dotfiles.default_mode = "symlink"
+
 [env]
 LANG = "ja_JP.UTF-8"
 
 [bootstrap.repos]
 "~/ghq/github.com/asapoka/dotfiles" = { url = "git@github.com:asapoka/dotfiles.git", ref = "master" }
 
+##################################################
+# tasks
+##################################################
 [tasks.upgrade]
 description = "upgrade all"
 run = "mise self-update -y && mise up && mise prune -y && mise doctor"    
@@ -16,6 +20,9 @@ run = "mise self-update -y && mise up && mise prune -y && mise doctor"
 description="Winget でパッケージを更新"
 run = "winget upgrade --all --accept-source-agreements"
 
+##################################################
+# mise tools
+##################################################
 [tools]
 fd = "latest"
 bat = "latest"
@@ -32,6 +39,9 @@ lazygit = "latest"
 bottom = "latest"
 
 [bootstrap.packages]
+##################################################
+# winget
+##################################################
 "winget:7zip.7zip" = "latest"
 "winget:AdGuard.AdGuard" = "latest"
 "winget:AgileBits.1Password" = "latest"
@@ -43,7 +53,9 @@ bottom = "latest"
 "winget:Microsoft.VisualStudioCode" = "latest"
 "winget:Microsoft.WindowsTerminal" = "latest"
 
-
+##################################################
+# brew
+##################################################
 "brew-cask:ghostty"   = "latest"
 "brew-cask:1password"   = "latest"
 "brew-cask:adguard"   = "latest"
@@ -54,7 +66,9 @@ bottom = "latest"
 "brew-cask:scansnap-home"   = "latest"
 "brew-cask:google-japanese-ime"   = "latest"
 
-
+##################################################
+# dotfiles
+##################################################
 [dotfiles]
 "~/.config/mise" = "~/ghq/github.com/asapoka/dotfiles/config/mise"
 "~/.gitconfig" = "~/ghq/github.com/asapoka/dotfiles/home/.gitconfig"
