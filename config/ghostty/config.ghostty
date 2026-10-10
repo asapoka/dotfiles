@@ -15,7 +15,7 @@ language = ja
 
 # フォント
 font-family = "HackGen Console NF"
-font-size = 17
+font-size = 14
 
 maximize = true
 window-subtitle = working-directory
