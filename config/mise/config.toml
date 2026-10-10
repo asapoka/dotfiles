@@ -29,6 +29,7 @@ neovim = "latest"
 ghq = "latest"
 jq = "latest"
 lazygit = "latest"
+bottom = "latest"
 
 [bootstrap.packages]
 "winget:AgileBits.1Password" = "latest"
