@@ -32,11 +32,17 @@ lazygit = "latest"
 bottom = "latest"
 
 [bootstrap.packages]
-"winget:AgileBits.1Password" = "latest"
 "winget:7zip.7zip" = "latest"
 "winget:AdGuard.AdGuard" = "latest"
+"winget:AgileBits.1Password" = "latest"
 "winget:Tailscale.Tailscale" = "latest"
 "winget:VideoLAN.VLC" = "latest"
+"winget:voidtools.Everything" = "latest"
+"winget:Google.GoogleDrive" = "latest"
+"winget:Google.JapaneseIME" = "latest"
+"winget:Microsoft.VisualStudioCode" = "latest"
+"winget:Microsoft.WindowsTerminal" = "latest"
+
 
 "brew-cask:ghostty"   = "latest"
 "brew-cask:1password"   = "latest"
