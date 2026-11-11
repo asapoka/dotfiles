@@ -45,6 +45,7 @@ bottom = "latest"
 "winget:7zip.7zip" = "latest"
 "winget:AdGuard.AdGuard" = "latest"
 "winget:AgileBits.1Password" = "latest"
+"winget:AprilNEA.OpenLogi" = "latest"
 "winget:Tailscale.Tailscale" = "latest"
 "winget:VideoLAN.VLC" = "latest"
 "winget:voidtools.Everything" = "latest"
@@ -52,6 +53,11 @@ bottom = "latest"
 "winget:Google.JapaneseIME" = "latest"
 "winget:Microsoft.VisualStudioCode" = "latest"
 "winget:Microsoft.WindowsTerminal" = "latest"
+
+##################################################
+# choco
+##################################################
+"choco:HackFonts" = "latest"
 
 ##################################################
 # brew
@@ -65,6 +71,7 @@ bottom = "latest"
 "brew-cask:visual-studio-code"   = "latest"
 "brew-cask:scansnap-home"   = "latest"
 "brew-cask:google-japanese-ime"   = "latest"
+"brew-cask:openlogi"   = "latest"
 
 ##################################################
 # dotfiles
